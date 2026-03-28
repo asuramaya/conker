@@ -6,7 +6,8 @@ __pycache__/
 
 conker/data/datasets/*
 !conker/data/datasets/.gitkeep
-conker/data/tokenizers/
+conker/data/tokenizers/*
+!conker/data/tokenizers/.gitkeep
 
 conker/out/*
 !conker/out/README.md
@@ -18,4 +19,3 @@ conker/submissions/*
 *.ptz
 *.bin
 *.log
-
