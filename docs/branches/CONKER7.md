@@ -1,5 +1,11 @@
 # Conker-7
 
+Historical status:
+
+- the best saved `Conker-7` row (`0.5283 fp16 / 0.5315 int6`) is preserved here as a research artifact
+- it is not the current clean frontier
+- it inherited the same accidentally trainable structural buffers that invalidated the old tandem `Conker-5` line
+
 `Conker-7` is the first explicit **future-aware training / causal eval** branch:
 
 - legal causal student at inference time

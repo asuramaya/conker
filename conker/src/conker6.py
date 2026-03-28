@@ -68,7 +68,7 @@ class ConkerSixModel(nn.Module):
         else:
             self.gate_hidden = None
             self.gate_out = None
-        self.freeze(keys=("vocab_axis", "causal_mask"), strict=False)
+        self.freeze(keys=["vocab_axis", "causal_mask"], strict=False)
 
     def _one_hot(self, chars: mx.array) -> mx.array:
         vocab_axis = self.vocab_axis if self.config.learnable_vocab_axis else mx.stop_gradient(self.vocab_axis)

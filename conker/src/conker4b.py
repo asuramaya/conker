@@ -478,7 +478,7 @@ class ConkerFourBModel(nn.Module):
         self.support_gate_abstain_bias = mx.array(0.0, dtype=mx.float32)
 
         self.freeze(
-            keys=(
+            keys=[
                 "vocab_axis",
                 "causal_mask",
                 "recency_kernel",
@@ -499,7 +499,7 @@ class ConkerFourBModel(nn.Module):
                 "delim_subtype_ids",
                 "delim_subtype_axis",
                 "delim_subtype_token_mask",
-            ),
+            ],
             strict=False,
         )
 

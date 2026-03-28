@@ -1244,3 +1244,162 @@ Warm-start fine-tune sweep, seed `42`:
 - `teacher_start=500`: fp16 `0.5122`, `int6 0.5242`, `int4 0.6083`
 
 Warm-start “replication” rows on seeds `43/44` came back numerically identical to the seed-42 bridge row. That means the current fine-tune recipe is effectively deterministic under the sequential training stream and does not count as a true statistical replication yet.
+
+## Conker-4b Strict Recovery
+
+**March 28, 2026**
+
+Root cause:
+
+- `Conker-4b` was using tuple-valued `freeze(keys=...)` calls.
+- MLX stores that tuple as one composite `_no_grad` key instead of freezing each member.
+- So `causal_mask`, `vocab_axis`, `token_class_ids`, and the token-class masks were all trainable in the old tandem and warm-start branches.
+
+Patched strict retrain, seed `42`, `window4 / 10x / 256 / batch16 / 1000 / lr5e-4`:
+
+- `exact1 + exact2 + exact3 + delim2 + special2 + number2 + markup2 + attr2`, gate-only + dynamic support gates, tandem:
+  - bridge fp16 `2.0589 bpb`
+  - full held-out fp16 `2.0971`
+  - full held-out `int6 2.1055`
+  - `int6` artifact `3,730,410` bytes
+
+Strict bridge ablations on the same patched branch:
+
+- no `exact3`: `2.0621`
+- exact-only (`exact1 + exact2 + exact3`): `2.0608`
+- no dynamic support gates: `2.0606`
+
+Interpretation:
+
+- the pre-fix `Conker-5/7` frontier was dominated by the learned structural side channel
+- after the freeze fix, the intended residual exact-expert branch is much weaker
+- the next honest branch must be rebuilt on top of the patched strict model, not the old warm-start ancestry
+
+## Conker-8
+
+**March 28, 2026**
+
+First strict rebuild after the `Conker-4b` freeze bug:
+
+- explicit learned lag profile over past lags only
+- explicit learned within-support token weights for delimiter / number / special / urlpath / markup / attr / entity
+- patched strict `Conker-4b` residual stack underneath
+
+Seed `42`, `window4 / 10x / seq256 / batch16 / 1000 / lr5e-4`, tandem, gate-only + dynamic support gates:
+
+- full explicit structure:
+  - bridge fp16 `2.0600 bpb`
+  - `int6 2.0994`
+  - `int4 2.3985`
+- ablate learned support-mask weights:
+  - bridge fp16 `2.0598`
+- ablate learned lag profile:
+  - bridge fp16 `2.0598`
+
+Interpretation:
+
+- the first legal structural rebuild does not recover the old contaminated frontier
+- the explicit lag/profile and support-mask weights are effectively inert in this simple form
+- `Conker-8` v0 is basically tied with the patched strict `Conker-4b` baseline
+
+Control matrix, same seed-42 recipe:
+
+- high-span full explicit structure (`lag=2.0`, `support=2.0`):
+  - `NaN`
+- high-span lag-only:
+  - `2.0601 bpb`
+- high-span mask-only:
+  - `NaN`
+- high-span full structure with dynamic support gates disabled:
+  - `NaN`
+- high-span full structure with recency enabled:
+  - `2.0867 bpb`
+
+Interpretation:
+
+- the lag surface still does nothing
+- the support-mask surface is unstable at higher amplitude
+- the gate layer is not the source of that instability
+- recency makes the legal branch worse
+- next structure work should target routing/control, not stronger weighted masks
+
+## Conker-9
+
+**March 28, 2026**
+
+First explicit causal-controller branch:
+
+- fixed legal lag buckets `(2, 4, 8, 16, 32, 64, 128, full)`
+- small controller over causal base features
+- controller blends bucketed exact/count features before the strict residual stack
+
+Seed `42`, `window4 / 10x / seq256 / batch16 / 1000 / lr5e-4`:
+
+- bridge fp16 `2.0600 bpb`
+- `int6 2.0976`
+- `int4 2.3898`
+
+The controller did learn nonzero parameters:
+
+- `lag_gate_feature_weights` mean abs `0.1197`
+- `lag_gate_bias` mean abs `0.1057`
+
+Interpretation:
+
+- this is not a no-op controller
+- but legal horizon selection alone still does not move the strict `~2.06` floor
+- next controller work should target routing/open-set decisions, not just lag selection
+
+## Conker-10
+
+**March 28, 2026**
+
+First memory-first `Conker` rebuild:
+
+- fixed packed training memory from `1,000,000` train tokens
+- exact unigram + exact bigram + hashed trigram counts
+- normalized posterior backoff
+- controller mixes `[base, unigram, bigram, trigram]`
+
+Seed `42`, `window4 / 10x / seq256 / batch16 / 500 / lr5e-4`:
+
+- bridge fp16 `2.2397 bpb`
+- `int6 2.2608`
+- `int4 2.6028`
+- packed memory bytes `12,599,296`
+
+Checkpoint readout:
+
+- mean source weights on a held-out batch:
+  - base `0.9914`
+  - unigram `0.0056`
+  - bigram `0.0019`
+  - trigram `0.0011`
+
+Interpretation:
+
+- the controller is learning, but it is almost entirely routing back to the base
+- the fixed packed priors are not persuasive enough in this first form
+- memory-first remains the right search direction, but this exact branch is weak
+- the next honest follow-ups are:
+  - cache-only and fixed-interpolation baselines
+  - packed prior + online score-first cache
+  - controller features that expose cache confidence more directly
+
+Conker-10a falsifications on the same packed tables:
+
+- memory-only baseline:
+  - bridge fp16 `6.0892 bpb`
+- fixed interpolation baseline with weights
+  - base `0.20`
+  - unigram `0.05`
+  - bigram `0.25`
+  - trigram `0.50`
+  - bridge fp16 `2.8436 bpb`
+  - `int6 2.8753`
+
+Interpretation:
+
+- memory-only is catastrophic
+- forcing large memory mass is much worse than the learned mixer
+- so the current packed tables themselves are weak, not just underused

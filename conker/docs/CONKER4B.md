@@ -172,3 +172,31 @@ Current architectural read:
 - the coarse `wordclass2` expert is not a live branch; in its current form it is either unstable or stably bad
 - the best current replicated frozen-base row is `exact1 + exact2 + exact3 + delim2 + special2 + number2 + markup2 + attr2`, with gate-only learned expert selection over fixed source maps and `seq_len=512 batch=8 steps=1500`, at `1.7871 bpb`
 - the new live tandem frontier is the same expert stack with `freeze_base=False`, `seq_len=256 batch=16 steps=1000 lr=5e-4`, replicated to `0.5615 bpb`
+
+Post-fix strict recovery, **March 28, 2026**:
+
+- Root cause: `Conker-4b` was calling `freeze(keys=...)` with tuples, but MLX only honors `list[str]` here. That left structural buffers trainable:
+  - `causal_mask`
+  - `vocab_axis`
+  - `token_class_ids`
+  - `delimiter_mask`
+  - `number_mask`
+  - `special_mask`
+  - `markup_mask`
+  - `attr_mask`
+- After patching those tuple-based freeze calls to lists and retraining the strict tandem branch from scratch:
+  - `Conker-4b exact1 + exact2 + exact3 + delim2 + special2 + number2 + markup2 + attr2`, gate-only + dynamic support gates, tandem `256 / 1000 / lr=5e-4`, seed `42`:
+    - bridge fp16 `2.0589 bpb`
+    - full held-out fp16 `2.0971`
+    - full held-out `int6 2.1055`
+    - `int6` artifact `3,730,410` bytes
+- Strict ablations on the same patched branch, bridge eval, seed `42`:
+  - no `exact3`: `2.0621 bpb`
+  - exact-only (`exact1 + exact2 + exact3`): `2.0608`
+  - no dynamic support gates: `2.0606`
+
+Read:
+
+- the old `~0.55` tandem frontier was overwhelmingly driven by accidentally trainable structural buffers, not the intended residual expert stack alone
+- once those buffers are truly frozen, the exact-expert/tandem branch falls to about `2.06–2.10 bpb`
+- after the fix, `exact3`, lexical support slices, and learned support gates are all only minor refinements on a much weaker base

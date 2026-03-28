@@ -90,7 +90,7 @@ class ConkerFourModel(nn.Module):
             else:
                 raise ValueError(f"Unknown Conker-4 mixer_mode: {config.mixer_mode}")
 
-        self.freeze(keys=("vocab_axis", "causal_mask", "recency_kernel"), strict=False)
+        self.freeze(keys=["vocab_axis", "causal_mask", "recency_kernel"], strict=False)
 
     def _one_hot(self, chars: mx.array) -> mx.array:
         return mx.where(chars[..., None] == self.vocab_axis[None, None, :], 1.0, 0.0)

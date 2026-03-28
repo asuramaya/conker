@@ -5,6 +5,7 @@ import argparse
 import json
 from pathlib import Path
 import sys
+from dataclasses import replace
 
 import mlx.core as mx
 import mlx.nn as nn
@@ -163,6 +164,8 @@ def evaluate_full_split_with_transform(
 
 def build_model_from_args(args: argparse.Namespace, dataset) -> tuple[ConkerSevenModel, RuntimeConfig]:
     runtime = build_runtime(args)
+    if args.eval_batches is not None:
+        runtime = replace(runtime, train=replace(runtime.train, eval_batches=args.eval_batches))
     tokenizer_vocab_path = None
     if dataset.tokenizer_path is not None:
         vocab_candidate = Path(dataset.tokenizer_path).with_suffix(".vocab")
@@ -238,6 +241,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--transform", choices=["none", "reverse", "shuffle"], default="none")
     parser.add_argument("--transform-seed", type=int, default=42)
     parser.add_argument("--full-split", action="store_true")
+    parser.add_argument("--eval-batches", type=int, default=None)
     parser.add_argument("--quant-bits", type=int, default=0)
     parser.add_argument("--seed", type=int, required=True)
     parser.add_argument("--steps", type=int, default=1000)
@@ -393,6 +397,7 @@ def main() -> None:
         "transform": args.transform,
         "transform_seed": args.transform_seed,
         "full_split": args.full_split,
+        "eval_batches": runtime.train.eval_batches,
         "quant_bits": args.quant_bits,
         "eval_loss": eval_loss,
         "eval_bits_per_token": bits_per_token_from_loss(eval_loss),

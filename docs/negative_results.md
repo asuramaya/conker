@@ -1,6 +1,6 @@
 # Negative Results
 
-This file is the compact version of the `Conker` research trail. It exists so the package tells the whole story, not only the current local winner.
+This file is the compact version of the `Conker` research trail after the March 28, 2026 reset. It exists so the repo tells the whole story, not only the current surviving anchor.
 
 ## Conker-3: Reservoir First
 
@@ -61,6 +61,7 @@ Read:
 
 - exact-history residual correction is real
 - but the frozen-base frontier still plateaued above the later tandem line
+- after the freeze bug was fixed, strict `Conker-4b` became the clean anchor again around `2.10 bpb`
 
 ## Conker-5: Pure Learned Discriminators
 
@@ -79,7 +80,7 @@ Read:
 - erasing sparse exact selectivity was the problem
 - learned overlap management works only on top of explicit sparse structure
 
-## Conker-5 Tandem: Legal Frontier
+## Conker-5 Tandem: Historical Frontier, Now Invalidated
 
 What changed:
 
@@ -88,13 +89,14 @@ What changed:
 
 What happened:
 
-- legal full held-out score dropped into the `0.57` range
-- longer tandem training pushed the legal frontier further
+- full held-out score dropped into the `0.57` range
+- longer tandem training pushed the line further
+- later audit showed the branch inherited accidentally trainable structural buffers from `Conker-4b`
 
 Read:
 
-- this was the first real step change on the legal path
-- tandem training was more important than many earlier architectural tweaks
+- this looked like the first real step change on the legal path
+- in hindsight it was mostly a contaminated structural-control line, not a clean legal frontier
 
 ## Conker-6: The Illegal Mirage
 
@@ -118,14 +120,14 @@ Read:
 
 The side-channel tooling stays in the package because invalid branches are still worth auditing and understanding.
 
-## Conker-7: Distill The Lesson, Keep Eval Causal
+## Conker-7: Distill The Lesson, Inherit The Same Bug
 
 What worked:
 
 - narrow training-only teacher
 - `exact2 + exact3`
 - weak teacher weight
-- warm-start from legal tandem `Conker-5`
+- warm-start from old tandem `Conker-5`
 
 What failed:
 
@@ -137,18 +139,75 @@ Read:
 
 - bridge improvements are not enough
 - full held-out evaluation is the only score that counts
-- future-aware training helps, but only when the teacher stays narrow and the student already has a strong legal base
+- future-aware training did move the branch locally
+- but the saved `0.5283 / 0.5315` row inherited the same invalid structural surface as old tandem
+
+## Conker-8: Explicit Legal Structure Rebuild
+
+What was tried:
+
+- strict lower-triangular lag profile learning
+- explicit within-support mask weighting
+- patched strict `Conker-4b` underneath
+
+What happened:
+
+- first strict pilot `2.0600 bpb`
+- removing learned lag or learned support weights leaves it at `~2.0598`
+- stronger support-mask amplitudes diverge to `NaN`
+
+Read:
+
+- legal weighted-mask rebuilding is effectively inert
+- the old hidden gain was not recoverable by simply making the masks explicit
+
+## Conker-9: Legal Lag Controller
+
+What was tried:
+
+- fixed causal lag buckets
+- small controller choosing which horizon to trust
+
+What happened:
+
+- first pilot `2.0600 bpb`
+
+Read:
+
+- the controller learned a real lag policy
+- horizon selection alone does not move the strict floor
+
+## Conker-10: Memory-First Restart
+
+What was tried:
+
+- packed unigram, bigram, and hashed trigram memory
+- normalized posterior backoff
+- learned mixer with the neural base
+
+What happened:
+
+- first pilot `2.2397 bpb`
+- memory-only baseline `6.0892`
+- fixed heavy-memory blend `2.8436`
+
+Read:
+
+- the first packed-memory construction is weak
+- the problem is not just that the learned mixer was too conservative
+- the next honest branch is better memory construction or packed prior + score-first online cache
 
 ## Global Lesson
 
 The line is now clear:
 
-- illegal oracle branches are useful as teachers and falsifiers
+- invalid branches are still valuable as falsifiers and teachers
 - legal branches must survive:
   - strict causality
   - full normalization
   - score-before-update discipline
   - single-pass evaluation
   - fresh-process full held-out evaluation
+  - honest artifact-boundary accounting
 
 Everything else is only search noise.

@@ -1,7 +1,7 @@
 #!/bin/zsh
 set -euo pipefail
 
-ROOT=$(cd "$(dirname "$0")/../.." && pwd)
+ROOT=/Users/asuramaya/Code/carving_machine_v3
 CONKER="$ROOT/conker"
 SRC_ROOT="${1:-}"
 

@@ -52,7 +52,7 @@ class ConkerSevenModel(nn.Module):
         self.config = config
         self.student = ConkerFourBModel(vocab_size=vocab_size, config=config.student_config)
         self.train_step = mx.array(0.0, dtype=mx.float32)
-        self.freeze(keys=("train_step",), strict=False)
+        self.freeze(keys=["train_step"], strict=False)
 
     def __call__(self, chars: mx.array) -> mx.array:
         return self.student(chars)

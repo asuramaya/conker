@@ -270,7 +270,7 @@ class ConkerThreeModel(nn.Module):
         self.linear_decays = mx.array(decays.astype(np.float32, copy=False))
         if self.config.linear_impl == "kernel":
             self.linear_kernel = mx.array(_kernel_from_decays(decays, self.config.max_seq_len))
-        self.freeze(keys=("linear_decays", "linear_kernel"), strict=False)
+        self.freeze(keys=["linear_decays", "linear_kernel"], strict=False)
 
     @staticmethod
     def _logit_features(logits: mx.array) -> tuple[mx.array, mx.array, mx.array]:
