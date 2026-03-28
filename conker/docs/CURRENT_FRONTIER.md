@@ -146,6 +146,11 @@ Read:
 4. First-pass packed memory also does not help unless the model actually trusts it.
 5. From here on, every new branch must be audited before its numbers matter.
 
+Operationally, `conker` is now the umbrella entrypoint while:
+
+- `conker-detect` owns the audits
+- `conker-ledger` owns the validity bundle and public report layer
+
 ## Live Next Steps
 
 No scaling yet. The next honest experiments are:
