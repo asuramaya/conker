@@ -77,6 +77,10 @@ def save_state_npz(path: Path, state: dict[str, mx.array]) -> None:
     np.savez(path, **arrays)
 
 
+def _fmt_float(value: float | None, precision: int = 4) -> str:
+    return f"{value:.{precision}f}" if value is not None else "n/a"
+
+
 def parse_fixed_weights(raw: str) -> tuple[float, float, float, float]:
     parts = [float(part.strip()) for part in raw.split(",") if part.strip()]
     if len(parts) != 4:
@@ -114,6 +118,11 @@ def main() -> None:
     parser.add_argument("--packed-tokens", type=int, default=4_000_000)
     parser.add_argument("--trigram-buckets", type=int, default=16_384)
     parser.add_argument("--blend-mode", choices=["learned_mixer", "fixed_interp", "memory_only"], default="learned_mixer")
+    parser.add_argument("--structure-proxy", action="store_true", help="Add causal memory-confidence proxy features to the controller.")
+    parser.add_argument("--structure-proxy-entropy", action="store_true")
+    parser.add_argument("--structure-proxy-peak", action="store_true")
+    parser.add_argument("--structure-proxy-candidate4", action="store_true")
+    parser.add_argument("--structure-proxy-agreement", action="store_true")
     parser.add_argument("--fixed-weights", default="0.25,0.10,0.25,0.40")
     parser.add_argument("--alpha-bigram", type=float, default=4.0)
     parser.add_argument("--alpha-trigram", type=float, default=2.0)
@@ -128,11 +137,20 @@ def main() -> None:
     dataset = build_parameter_golf_dataset(args.data_root, vocab_size=args.vocab_size)
     tables = build_packed_tables(dataset, token_budget=args.packed_tokens, trigram_buckets=args.trigram_buckets)
     base_cfg = base_config_for_variant(args, runtime.train.seq_len)
+    if args.structure_proxy:
+        args.structure_proxy_entropy = True
+        args.structure_proxy_peak = True
+        args.structure_proxy_candidate4 = True
+        args.structure_proxy_agreement = True
     config = scale_config(
         ConkerTenConfig(
             base_config=base_cfg,
             freeze_base=args.freeze_base,
             blend_mode=args.blend_mode,
+            structure_proxy_entropy=args.structure_proxy_entropy,
+            structure_proxy_peak=args.structure_proxy_peak,
+            structure_proxy_candidate4=args.structure_proxy_candidate4,
+            structure_proxy_agreement=args.structure_proxy_agreement,
             fixed_component_weights=parse_fixed_weights(args.fixed_weights),
             alpha_bigram=args.alpha_bigram,
             alpha_trigram=args.alpha_trigram,
@@ -150,7 +168,8 @@ def main() -> None:
     )
     print(
         f"  variant={args.variant} scale={args.scale:.3f} freeze_base={config.freeze_base} "
-        f"blend_mode={config.blend_mode} "
+        f"blend_mode={config.blend_mode} structure_proxy="
+        f"{int(config.structure_proxy_entropy) + int(config.structure_proxy_peak) + int(config.structure_proxy_candidate4) + int(config.structure_proxy_agreement)} "
         f"packed_tokens={tables.token_budget:,} trigram_buckets={tables.trigram_buckets:,} "
         f"alpha_bigram={config.alpha_bigram:.2f} alpha_trigram={config.alpha_trigram:.2f} "
         f"params={count_trainable_params(model):,} packed_bytes={tables.bytes_total:,}"
@@ -207,6 +226,16 @@ def main() -> None:
             "trigram_buckets": tables.trigram_buckets,
             "packed_bytes": tables.bytes_total,
             "blend_mode": config.blend_mode,
+            "include_structure_proxy": bool(
+                config.structure_proxy_entropy
+                or config.structure_proxy_peak
+                or config.structure_proxy_candidate4
+                or config.structure_proxy_agreement
+            ),
+            "structure_proxy_entropy": config.structure_proxy_entropy,
+            "structure_proxy_peak": config.structure_proxy_peak,
+            "structure_proxy_candidate4": config.structure_proxy_candidate4,
+            "structure_proxy_agreement": config.structure_proxy_agreement,
             "fixed_component_weights": list(config.fixed_component_weights),
             "alpha_bigram": config.alpha_bigram,
             "alpha_trigram": config.alpha_trigram,
@@ -268,9 +297,9 @@ def main() -> None:
         save_state_npz(Path(args.save_state), state)
 
     print(
-        f"  Te:{test_eval:.4f} "
-        f"bpt:{test_bpt:.4f} "
-        f"bpb:{test_bpb:.4f} "
+        f"  Te:{_fmt_float(test_eval)} "
+        f"bpt:{_fmt_float(test_bpt)} "
+        f"bpb:{_fmt_float(test_bpb)} "
         f"Of:{metrics.overfit_pct:+.1f}% "
         f"T:{metrics.train_time_sec:.0f}s"
     )

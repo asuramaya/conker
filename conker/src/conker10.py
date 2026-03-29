@@ -7,6 +7,7 @@ import mlx.nn as nn
 import numpy as np
 
 from conker.src.conker3 import ConkerThreeConfig, ConkerThreeModel, scale_config as scale_conker3_config
+from conker.src.giddy_up.features import structure_proxy_feature_arrays
 from conker.src.golf_data import GolfTokenShardDataset
 
 
@@ -31,6 +32,10 @@ class ConkerTenConfig:
     base_config: ConkerThreeConfig = ConkerThreeConfig(max_seq_len=256, linear_modes=256, local_window=4)
     freeze_base: bool = False
     blend_mode: str = "learned_mixer"
+    structure_proxy_entropy: bool = False
+    structure_proxy_peak: bool = False
+    structure_proxy_candidate4: bool = False
+    structure_proxy_agreement: bool = False
     fixed_component_weights: tuple[float, float, float, float] = (0.25, 0.10, 0.25, 0.40)
     alpha_bigram: float = 4.0
     alpha_trigram: float = 2.0
@@ -125,7 +130,14 @@ class ConkerTenModel(nn.Module):
         self.controller_hidden = None
         self.controller_out = None
         if config.blend_mode == "learned_mixer":
-            self.controller_hidden = nn.Linear(7, config.controller_hidden)
+            controller_features = (
+                7
+                + int(config.structure_proxy_entropy)
+                + int(config.structure_proxy_peak)
+                + int(config.structure_proxy_candidate4)
+                + int(config.structure_proxy_agreement)
+            )
+            self.controller_hidden = nn.Linear(controller_features, config.controller_hidden)
             self.controller_out = nn.Linear(config.controller_hidden, 4)
         elif config.blend_mode not in {"fixed_interp", "memory_only"}:
             raise ValueError(f"Unknown Conker-10 blend_mode: {config.blend_mode}")
@@ -191,6 +203,9 @@ class ConkerTenModel(nn.Module):
     def _controller_weights(
         self,
         base_logits: mx.array,
+        base_probs: mx.array,
+        p_bigram: mx.array,
+        p_trigram: mx.array,
         bigram_totals: mx.array,
         trigram_totals: mx.array,
     ) -> mx.array:
@@ -210,6 +225,24 @@ class ConkerTenModel(nn.Module):
             ],
             axis=-1,
         )
+        proxy_columns: list[mx.array] = []
+        if (
+            self.config.structure_proxy_entropy
+            or self.config.structure_proxy_peak
+            or self.config.structure_proxy_candidate4
+            or self.config.structure_proxy_agreement
+        ):
+            proxy = structure_proxy_feature_arrays(base_probs, p_trigram)
+            if self.config.structure_proxy_entropy:
+                proxy_columns.append(proxy["entropy"][..., None])
+            if self.config.structure_proxy_peak:
+                proxy_columns.append(proxy["peak"][..., None])
+            if self.config.structure_proxy_candidate4:
+                proxy_columns.append(proxy["candidate4"][..., None])
+            if self.config.structure_proxy_agreement:
+                proxy_columns.append(proxy["agreement"][..., None])
+        if proxy_columns:
+            features = mx.concatenate([features, *proxy_columns], axis=-1)
         hidden = mx.tanh(self.controller_hidden(features))
         logits = self.controller_out(hidden)
         temperature = max(self.config.controller_temperature, 1e-4)
@@ -225,7 +258,14 @@ class ConkerTenModel(nn.Module):
             mixed = p_trigram
         else:
             if self.config.blend_mode == "learned_mixer":
-                weights = self._controller_weights(base_logits, bigram_totals, trigram_totals)
+                weights = self._controller_weights(
+                    base_logits,
+                    base_probs,
+                    p_bigram,
+                    p_trigram,
+                    bigram_totals,
+                    trigram_totals,
+                )
             else:
                 fixed = np.asarray(self.config.fixed_component_weights, dtype=np.float32)
                 fixed = fixed / np.maximum(fixed.sum(), 1e-8)

@@ -138,6 +138,43 @@ Read:
 - the controller learned real parameters
 - but it still routed almost everything back to the base
 
+### Conker-10 Structure Proxy
+
+Small synthetic causal pilot on `/tmp/conker_blinx_proxy_data`:
+
+- baseline `Conker-10` test bits/token: `0.1435`
+- proxy-controller `Conker-10` test bits/token: `0.1336`
+
+Read:
+
+- an explicit structure-confidence proxy can move the controller on a causal corpus
+- this is still only a tiny synthetic check, not a recovery of the original frontier
+- but it is the first measured signal that the controller can use a BLINX-style structure cue without leaving causality
+
+### Giddy-Up Status
+
+Bridge split:
+
+- BLINX oracle targets live under `blinx/conker/src/giddy_up`
+- Conker causal proxy features live under `conker/src/giddy_up`
+
+Current read:
+
+- exact uniqueness is too brittle as a bridge target
+- small candidate-set confidence is the stronger bridge signal
+- raw `candidate4` proxy was unstable
+- softened `candidate4` plus `peak` is the current bounded synthetic winner
+
+Legality read:
+
+- BLINX remains illegal as an eval-time scorer
+- current Conker bridge features pass sampled `conker-detect` legality checks:
+  - normalization
+  - repeatability
+  - future-suffix invariance
+  - answer-mask invariance
+- this is enough to keep the bridge alive as a legal direction, but not enough to make a competition claim
+
 ## What We Learned
 
 1. The main hidden power in the invalidated line was structural control, not the reservoir itself.
@@ -159,6 +196,7 @@ No scaling yet. The next honest experiments are:
 2. Fixed interpolation over `[base, unigram, bigram, trigram]`.
 3. Packed prior + online score-first cache.
 4. Controller features that explicitly expose cache confidence / agreement.
+5. Promote only the stable `peak + soft candidate4` pair into the real FineWeb path.
 
 ## Related Files
 

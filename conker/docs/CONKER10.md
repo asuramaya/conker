@@ -116,3 +116,85 @@ That narrows the next honest branch to:
 - or packed prior + online score-first cache
 
 and rules out the simple story that the learned mixer merely refused to use already-good memory.
+
+## Structure-Proxy Pilot
+
+**March 28, 2026**
+
+A tiny causal proxy experiment was added to the controller:
+
+- feature set:
+  - trigram entropy
+  - trigram peak probability
+  - base-vs-trigram top-token agreement
+- switch:
+  - `--structure-proxy`
+
+Run conditions:
+
+- synthetic code-like shard corpus under `/tmp/conker_blinx_proxy_data`
+- seed `42`
+- `window4 / 1x / seq64 / batch8 / 80 / lr1e-3`
+- packed tokens: `8,000`
+- trigram buckets: `256`
+
+Result:
+
+- baseline `Conker-10` test bits/token: `0.1435`
+- proxy `Conker-10` test bits/token: `0.1336`
+- the proxy improved the short synthetic pilot while staying causal
+
+Interpretation:
+
+- the controller responds to an explicit structure-confidence proxy
+- this does not repair the original FineWeb frontier yet
+- but it is a minimal causal signal worth keeping for the next memory/controller branch
+
+## Giddy-Up Bridge
+
+**March 28, 2026**
+
+The structure-proxy work is now split into a bridge layer called `giddy_up`:
+
+- BLINX side:
+  - offline oracle targets from bidirectional context analysis
+- Conker side:
+  - strictly causal proxy features computed from prefix-only memory/base distributions
+
+Current Conker bridge implementation lives in:
+
+- [giddy_up/features.py](/Users/asuramaya/Code/carving_machine_v3/conker-standalone/conker/src/giddy_up/features.py)
+- [run_conker10_structure_proxy_matrix.py](/Users/asuramaya/Code/carving_machine_v3/conker-standalone/conker/scripts/run_conker10_structure_proxy_matrix.py)
+- [giddy_up/conker10_adapter.py](/Users/asuramaya/Code/carving_machine_v3/conker-standalone/conker/src/giddy_up/conker10_adapter.py)
+
+Current read on the bounded synthetic pilot:
+
+- raw `candidate4` proxy was too sharp and could catastrophically blow up
+- softening it to `top4_mass * (1 - normalized_entropy)` fixed that instability
+- the best stable pair in the small synthetic runs is:
+  - `peak + soft candidate4`
+
+This remains a direction-finding result only. It has not yet been run as an official FineWeb submission path.
+
+## Sampled Legality Audit
+
+**March 28, 2026**
+
+The current saved `Conker-10` bridge checkpoint was replayed through `conker-detect` using a runtime adapter and a sampled legality pass.
+
+Audit artifact:
+
+- [conker10_giddyup_probe_legality_vocab1024_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker-detect/out/conker10_giddyup_probe_legality_vocab1024_2026-03-28.json)
+
+Sampled checks passed:
+
+- normalization over the explicit `1024`-token alphabet
+- repeatability
+- future-suffix invariance
+- answer-mask invariance
+
+Interpretation:
+
+- the current bridge features look provisionally legal under the repo's stricter causal standard
+- this is still a sampled behavioral audit, not a full proof
+- BLINX itself remains illegal as an eval-time scorer and is only valid as an offline oracle
