@@ -175,6 +175,21 @@ Legality read:
   - answer-mask invariance
 - this is enough to keep the bridge alive as a legal direction, but not enough to make a competition claim
 
+### Giddy-Up FineWeb Pilot
+
+First real FineWeb-side pilot on `fineweb10B_sp1024`:
+
+- baseline: `8.3499` test bits/token
+- `peak`: `8.0457`
+- `peak + soft candidate4`: `8.0348`
+
+Read:
+
+- the bridge signal survives contact with the real dataset path
+- `peak + soft candidate4` remains the current best small pilot pair
+- the saved FineWeb checkpoint passes sampled `conker-detect` legality checks
+- this is still only a small pilot and not yet a record-oriented run
+
 ## What We Learned
 
 1. The main hidden power in the invalidated line was structural control, not the reservoir itself.
@@ -197,6 +212,7 @@ No scaling yet. The next honest experiments are:
 3. Packed prior + online score-first cache.
 4. Controller features that explicitly expose cache confidence / agreement.
 5. Promote only the stable `peak + soft candidate4` pair into the real FineWeb path.
+6. Replicate the FineWeb `peak + soft candidate4` pilot before any scaling.
 
 ## Related Files
 

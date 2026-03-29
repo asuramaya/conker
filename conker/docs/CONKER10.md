@@ -198,3 +198,48 @@ Interpretation:
 - the current bridge features look provisionally legal under the repo's stricter causal standard
 - this is still a sampled behavioral audit, not a full proof
 - BLINX itself remains illegal as an eval-time scorer and is only valid as an offline oracle
+
+## FineWeb Giddy-Up Pilot
+
+**March 28, 2026**
+
+First real FineWeb-side `Giddy-Up` comparison on the official dataset surface:
+
+- data root:
+  - `conker/data/datasets/fineweb10B_sp1024`
+- recipe:
+  - `window4 / 1x / seq64 / batch8 / 120 / lr1e-3`
+  - packed tokens `200,000`
+  - trigram buckets `2,048`
+  - seed `42`
+
+Results:
+
+- baseline:
+  - [json](/Users/asuramaya/Code/carving_machine_v3/conker-standalone/conker/out/conker10_giddyup_fineweb_baseline_seed42_2026-03-28.json)
+  - test bits/token `8.3499`
+- `peak`:
+  - [json](/Users/asuramaya/Code/carving_machine_v3/conker-standalone/conker/out/conker10_giddyup_fineweb_peak_seed42_2026-03-28.json)
+  - test bits/token `8.0457`
+- `peak + soft candidate4`:
+  - [json](/Users/asuramaya/Code/carving_machine_v3/conker-standalone/conker/out/conker10_giddyup_fineweb_peak_candidate4_seed42_2026-03-28.json)
+  - [state](/Users/asuramaya/Code/carving_machine_v3/conker-standalone/conker/out/conker10_giddyup_fineweb_peak_candidate4_seed42_2026-03-28.npz)
+  - test bits/token `8.0348`
+
+Legality audit on the saved FineWeb bridge checkpoint:
+
+- [conker10_giddyup_fineweb_peak_candidate4_legality_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker-detect/out/conker10_giddyup_fineweb_peak_candidate4_legality_2026-03-28.json)
+
+Sampled checks passed:
+
+- normalization
+- repeatability
+- future-suffix invariance
+- answer-mask invariance
+
+Read:
+
+- the same bridge pair that survived the synthetic softening step also helps on the real FineWeb path
+- the gain is modest but directional
+- the current saved FineWeb bridge checkpoint also passes the sampled behavioral legality audit
+- this is still a small pilot, not a frontier claim

@@ -16,8 +16,10 @@ CASES = (
     ("baseline", ()),
     ("entropy", ("--structure-proxy-entropy",)),
     ("peak", ("--structure-proxy-peak",)),
+    ("candidate4", ("--structure-proxy-candidate4",)),
     ("agreement", ("--structure-proxy-agreement",)),
     ("entropy_peak", ("--structure-proxy-entropy", "--structure-proxy-peak")),
+    ("peak_candidate4", ("--structure-proxy-peak", "--structure-proxy-candidate4")),
     ("peak_agreement", ("--structure-proxy-peak", "--structure-proxy-agreement")),
     ("all", ("--structure-proxy",)),
 )

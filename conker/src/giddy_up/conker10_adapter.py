@@ -19,13 +19,13 @@ from conker.src.golf_data import build_parameter_golf_dataset
 
 
 class ConkerTenAdapter:
-    def __init__(self, summary_path: str, checkpoint_path: str):
+    def __init__(self, summary_path: str, checkpoint_path: str, data_root: str | None = None):
         self.summary_path = str(summary_path)
         self.checkpoint_path = str(checkpoint_path)
         summary = json.loads(Path(summary_path).read_text(encoding="utf-8"))
         model_cfg = summary["model"]
         train_cfg = summary["config"]["train"]
-        data_root = summary.get("adapter_data_root") or "/tmp/conker_blinx_proxy_data"
+        data_root = data_root or summary.get("adapter_data_root") or summary["dataset"]["source_path"]
 
         dataset = build_parameter_golf_dataset(data_root, vocab_size=1024)
         tables = build_packed_tables(
@@ -98,4 +98,5 @@ def build_adapter(config: dict[str, Any]) -> ConkerTenAdapter:
     return ConkerTenAdapter(
         summary_path=str(config["summary_path"]),
         checkpoint_path=str(config["checkpoint_path"]),
+        data_root=None if config.get("data_root") is None else str(config["data_root"]),
     )
