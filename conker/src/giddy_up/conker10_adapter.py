@@ -87,7 +87,12 @@ class ConkerTenAdapter:
         if sample_positions is None:
             return {}
         idx = np.asarray(sample_positions, dtype=np.int64)
-        return {"sample_predictions": probs[idx]}
+        sampled = probs[idx]
+        gold = np.log(np.maximum(sampled[np.arange(idx.shape[0]), seq[idx]], np.finfo(np.float64).tiny))
+        return {
+            "sample_predictions": sampled,
+            "sample_gold_logprobs": gold,
+        }
 
     def adapt_chunk(self, tokens: np.ndarray) -> None:
         _ = tokens
