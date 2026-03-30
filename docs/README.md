@@ -26,3 +26,5 @@ Archival branch records:
 - [Conker-8](../conker/docs/CONKER8.md)
 - [Conker-9](../conker/docs/CONKER9.md)
 - [Conker-10](../conker/docs/CONKER10.md)
+- [Conker-11](../conker/docs/CONKER11.md)
+- [Conker-12](../conker/docs/CONKER12.md)

@@ -1051,7 +1051,7 @@ Negative `Conker-5` pure learned-discriminator probe, seed `42`:
 
 Artifacts:
 
-- [CONKER6.md](/Users/asuramaya/Code/carving_machine_v3/conker/docs/CONKER6.md)
+- [CONKER6.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER6.md)
 - [conker6.py](/Users/asuramaya/Code/carving_machine_v3/conker/src/conker6.py)
 - [run_conker6_golf_bridge.py](/Users/asuramaya/Code/carving_machine_v3/conker/scripts/run_conker6_golf_bridge.py)
 - [audit_conker6_legality.py](/Users/asuramaya/Code/carving_machine_v3/conker/scripts/audit_conker6_legality.py)
@@ -1200,7 +1200,7 @@ New branch:
 
 - [conker7.py](/Users/asuramaya/Code/carving_machine_v3/conker/src/conker7.py)
 - [run_conker7_golf_bridge.py](/Users/asuramaya/Code/carving_machine_v3/conker/scripts/run_conker7_golf_bridge.py)
-- [CONKER7.md](/Users/asuramaya/Code/carving_machine_v3/conker/docs/CONKER7.md)
+- [CONKER7.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER7.md)
 
 Purpose:
 

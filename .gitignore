@@ -15,6 +15,15 @@ conker/out/*
 conker/submissions/*
 !conker/submissions/README.md
 
+legacy_lab/data/datasets
+legacy_lab/data/datasets/*
+legacy_lab/data/tokenizers
+legacy_lab/data/tokenizers/*
+legacy_lab/out/*
+!legacy_lab/out/README.md
+legacy_lab/submissions/*
+!legacy_lab/submissions/README.md
+
 *.npz
 *.ptz
 *.bin

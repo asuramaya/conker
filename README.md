@@ -8,6 +8,9 @@ This repo now reflects the March 28, 2026 reset:
 - the strict clean anchor is patched `Conker-4b`, around `2.10 bpb`
 - `Conker-8` and `Conker-9` are honest rebuilds and both sit near the same strict floor
 - `Conker-10` is the first memory-first restart; it is real, but currently weak
+- `Conker-11` is the renamed recursive causal router
+- `Conker-12` is the higher-order four-axis program tensor
+- `Conker-13` is the direct five-axis controller over the `Conker-3` substrate
 
 This repo keeps:
 
@@ -19,6 +22,7 @@ External tooling now lives in sibling repos:
 
 - [`conker-detect`](https://github.com/asuramaya/conker-detect): structural, artifact-boundary, and legality auditing
 - [`conker-ledger`](https://github.com/asuramaya/conker-ledger): backlog, lineage, survival, and public validity bundles
+- [`giddy-up`](/Users/asuramaya/Code/carving_machine_v3/giddy-up): oracle/bridge layer between BLINX discovery and causal Conker features
 
 ## Current State
 
@@ -106,6 +110,9 @@ python3 conker/scripts/run_conker7_checkpoint_eval.py \
 - `Conker-8`: explicit legal weighted-structure rebuild, inert
 - `Conker-9`: legal lag-controller rebuild, inert
 - `Conker-10`: first memory-first restart
+- `Conker-11`: renamed recursive causal router
+- `Conker-12`: higher-order four-axis program tensor
+- `Conker-13`: direct five-axis controller over linear mode groups and local offsets
 
 ## Docs
 
@@ -124,3 +131,6 @@ Archival branch notes:
 - [Conker-8](./conker/docs/CONKER8.md)
 - [Conker-9](./conker/docs/CONKER9.md)
 - [Conker-10](./conker/docs/CONKER10.md)
+- [Conker-11](./conker/docs/CONKER11.md)
+- [Conker-12](./conker/docs/CONKER12.md)
+- [Conker-13](./conker/docs/CONKER13.md)

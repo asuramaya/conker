@@ -12,9 +12,12 @@ Use this folder for:
 
 Suggested reading order:
 
-- [CURRENT_FRONTIER.md](/Users/asuramaya/Code/carving_machine_v3/conker/docs/CURRENT_FRONTIER.md)
-- [COMPRESSION_MATRIX.md](/Users/asuramaya/Code/carving_machine_v3/conker/docs/COMPRESSION_MATRIX.md)
-- [CONKER4B.md](/Users/asuramaya/Code/carving_machine_v3/conker/docs/CONKER4B.md)
-- [CONKER8.md](/Users/asuramaya/Code/carving_machine_v3/conker/docs/CONKER8.md)
-- [CONKER9.md](/Users/asuramaya/Code/carving_machine_v3/conker/docs/CONKER9.md)
-- [CONKER10.md](/Users/asuramaya/Code/carving_machine_v3/conker/docs/CONKER10.md)
+- [CURRENT_FRONTIER.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CURRENT_FRONTIER.md)
+- [COMPRESSION_MATRIX.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/COMPRESSION_MATRIX.md)
+- [CONKER4B.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER4B.md)
+- [CONKER8.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER8.md)
+- [CONKER9.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER9.md)
+- [CONKER10.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER10.md)
+- [CONKER11.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER11.md)
+- [CONKER12.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER12.md)
+- [CONKER13.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER13.md)

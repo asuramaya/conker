@@ -1162,7 +1162,7 @@ Artifacts:
 
 - [conker7.py](/Users/asuramaya/Code/carving_machine_v3/conker/src/conker7.py)
 - [run_conker7_golf_bridge.py](/Users/asuramaya/Code/carving_machine_v3/conker/scripts/run_conker7_golf_bridge.py)
-- [CONKER7.md](/Users/asuramaya/Code/carving_machine_v3/conker/docs/CONKER7.md)
+- [CONKER7.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER7.md)
 
 Seed `42`, `window4 / 10x / 256 / batch16 / lr5e-4`:
 

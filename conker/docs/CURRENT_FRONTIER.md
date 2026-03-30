@@ -155,8 +155,9 @@ Read:
 
 Bridge split:
 
-- BLINX oracle targets live under `blinx/conker/src/giddy_up`
-- Conker causal proxy features live under `conker/src/giddy_up`
+- canonical bridge repo now lives under `giddy-up/`
+- BLINX oracle-side mirror lives under `blinx/conker/src/giddy_up`
+- Conker causal feature mirror lives under `conker/src/giddy_up`
 
 Current read:
 
@@ -216,9 +217,9 @@ No scaling yet. The next honest experiments are:
 
 ## Related Files
 
-- [CONKER4B.md](/Users/asuramaya/Code/carving_machine_v3/conker/docs/CONKER4B.md)
-- [CONKER8.md](/Users/asuramaya/Code/carving_machine_v3/conker/docs/CONKER8.md)
-- [CONKER9.md](/Users/asuramaya/Code/carving_machine_v3/conker/docs/CONKER9.md)
-- [CONKER10.md](/Users/asuramaya/Code/carving_machine_v3/conker/docs/CONKER10.md)
-- [COMPRESSION_MATRIX.md](/Users/asuramaya/Code/carving_machine_v3/conker/docs/COMPRESSION_MATRIX.md)
-- [HANDOFF.md](/Users/asuramaya/Code/carving_machine_v3/conker/HANDOFF.md)
+- [CONKER4B.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER4B.md)
+- [CONKER8.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER8.md)
+- [CONKER9.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER9.md)
+- [CONKER10.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER10.md)
+- [COMPRESSION_MATRIX.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/COMPRESSION_MATRIX.md)
+- [HANDOFF.md](/Users/asuramaya/Code/carving_machine_v3/conker/legacy_lab/HANDOFF.md)

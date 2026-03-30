@@ -73,8 +73,8 @@ That is the highest-value unresolved question right now.
 
 ## Important Files
 
-- [conker/HANDOFF.md](/Users/asuramaya/Code/carving_machine_v3/conker/HANDOFF.md)
-- [conker/docs/COMPRESSION_MATRIX.md](/Users/asuramaya/Code/carving_machine_v3/conker/docs/COMPRESSION_MATRIX.md)
-- [conker/docs/CONKER2.md](/Users/asuramaya/Code/carving_machine_v3/conker/docs/CONKER2.md)
+- [conker/HANDOFF.md](/Users/asuramaya/Code/carving_machine_v3/conker/legacy_lab/HANDOFF.md)
+- [conker/docs/COMPRESSION_MATRIX.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/COMPRESSION_MATRIX.md)
+- [conker/docs/CONKER2.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER2.md)
 - [conker/scripts/run_conker2_golf_bridge.py](/Users/asuramaya/Code/carving_machine_v3/conker/scripts/run_conker2_golf_bridge.py)
 
