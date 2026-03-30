@@ -1,5 +1,11 @@
 # Conker
 
+Rescue status:
+
+- this subtree is preserved lab history, not the current public repo surface
+- many links and claims below reflect the lab-era layout and may be superseded
+- start with [Presentation](../docs/presentation.md), [Rescue](../docs/rescue.md), and the active repo in [`../conker`](../conker/README.md) before using this subtree as truth
+
 Submission-facing compression branch for the Parameter Golf line.
 
 Purpose:

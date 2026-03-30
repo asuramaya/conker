@@ -1,5 +1,11 @@
 # Conker Handoff
 
+Rescue status:
+
+- this is preserved lab-era handoff material
+- it is kept for provenance and forensic comparison, not as the current public read
+- use [Presentation](../docs/presentation.md), [Rescue](../docs/rescue.md), and [Current Frontier](./docs/CURRENT_FRONTIER.md) before relying on this file
+
 This subtree is the clean restart point for the compression-first line.
 
 ## Current Live Read

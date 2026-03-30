@@ -1,5 +1,11 @@
 # Compression Matrix
 
+Rescue status:
+
+- this is preserved matrix material from the dense branch-note layer
+- many rows below are historical search records, not live public claims
+- use [Presentation](../../docs/presentation.md), [Rescue](../../docs/rescue.md), and [Current Frontier](./CURRENT_FRONTIER.md) for the current public read
+
 This is the next experiment matrix for `conker/`.
 
 It is deliberately narrower than the archival matrix. Every row is framed as a compression question:

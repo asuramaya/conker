@@ -1,5 +1,11 @@
 # Swarm Handoff
 
+Rescue status:
+
+- this is preserved operator-facing handoff material from an earlier research phase
+- active priorities may have changed after the reset and later branch work
+- use [Presentation](../../docs/presentation.md), [Rescue](../../docs/rescue.md), and [Current Frontier](./CURRENT_FRONTIER.md) before treating this file as current direction
+
 ## Mission
 
 Help push `conker/` toward a real Parameter Golf submission.
@@ -77,4 +83,3 @@ That is the highest-value unresolved question right now.
 - [conker/docs/COMPRESSION_MATRIX.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/COMPRESSION_MATRIX.md)
 - [conker/docs/CONKER2.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER2.md)
 - [conker/scripts/run_conker2_golf_bridge.py](/Users/asuramaya/Code/carving_machine_v3/conker/scripts/run_conker2_golf_bridge.py)
-

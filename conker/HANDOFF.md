@@ -1,5 +1,11 @@
 # Conker Handoff
 
+Rescue status:
+
+- this is preserved historical handoff material, not the curated public entrypoint
+- scores and conclusions below may be superseded or invalidated by the post-reset docs
+- start with [Presentation](../docs/presentation.md), [Rescue](../docs/rescue.md), and [Detailed Branch Notes](./docs/README.md) before using this file as current truth
+
 This subtree is the clean restart point for the compression-first line.
 
 ## Current Live Read
