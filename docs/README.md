@@ -7,7 +7,9 @@ Start here if you want the current repo story. The deeper branch-note store stil
 ## Start Here
 
 - [Status](../STATUS.md)
+- [Salvage Matrix](../SALVAGE_MATRIX.md)
 - [Presentation](./presentation.md)
+- [Parallel Exploration](./parallel_exploration.md)
 - [Current Frontier](./current_frontier.md)
 - [Validity](./validity.md)
 - [Negative Results](./negative_results.md)
@@ -17,12 +19,14 @@ Start here if you want the current repo story. The deeper branch-note store stil
 ## Reading Order
 
 1. [Status](../STATUS.md)
-2. [Presentation](./presentation.md)
-3. [Current Frontier](./current_frontier.md)
-4. [Validity](./validity.md)
-5. [Negative Results](./negative_results.md)
-6. [Rescue](./rescue.md)
-7. [Detailed Branch Notes](../conker/docs/README.md)
+2. [Salvage Matrix](../SALVAGE_MATRIX.md)
+3. [Presentation](./presentation.md)
+4. [Parallel Exploration](./parallel_exploration.md)
+5. [Current Frontier](./current_frontier.md)
+6. [Validity](./validity.md)
+7. [Negative Results](./negative_results.md)
+8. [Rescue](./rescue.md)
+9. [Detailed Branch Notes](../conker/docs/README.md)
 
 ## Branch Records
 

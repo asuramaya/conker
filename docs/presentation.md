@@ -25,11 +25,13 @@ The core post-reset finding is simple: memory alone has been weak so far, legal 
 ## Where To Read
 
 1. [Status](../STATUS.md)
-2. [Current Frontier](./current_frontier.md)
-3. [Validity](./validity.md)
-4. [Negative Results](./negative_results.md)
-5. [Rescue](./rescue.md)
-6. [Detailed Branch Notes](../conker/docs/README.md)
+2. [Salvage Matrix](../SALVAGE_MATRIX.md)
+3. [Current Frontier](./current_frontier.md)
+4. [Validity](./validity.md)
+5. [Negative Results](./negative_results.md)
+6. [Parallel Exploration](./parallel_exploration.md)
+7. [Rescue](./rescue.md)
+8. [Detailed Branch Notes](../conker/docs/README.md)
 
 ## Companion Repos
 

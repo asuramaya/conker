@@ -44,6 +44,8 @@ Active exploratory branches:
 
 ## Read Next
 
+- [Salvage Matrix](./SALVAGE_MATRIX.md)
+- [Parallel Exploration](./docs/parallel_exploration.md)
 - [Status in context](./docs/presentation.md)
 - [Current Frontier](./docs/current_frontier.md)
 - [Validity](./docs/validity.md)

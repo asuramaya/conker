@@ -21,6 +21,10 @@ This page explains what `conker` preserves on purpose and how to read the rescue
 - treat `conker/docs/` as the detailed branch-note layer
 - treat `legacy_lab/` as preserved history, not current runtime truth
 
+See also:
+
+- [Salvage Matrix](../SALVAGE_MATRIX.md)
+
 ## What Is Not Fully Normalized
 
 - deeper historical notes still contain lab-era absolute path links
