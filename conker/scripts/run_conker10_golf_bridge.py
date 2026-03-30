@@ -123,6 +123,7 @@ def main() -> None:
     parser.add_argument("--structure-proxy-peak", action="store_true")
     parser.add_argument("--structure-proxy-candidate4", action="store_true")
     parser.add_argument("--structure-proxy-agreement", action="store_true")
+    parser.add_argument("--structure-proxy-agreement-mass", action="store_true")
     parser.add_argument("--fixed-weights", default="0.25,0.10,0.25,0.40")
     parser.add_argument("--alpha-bigram", type=float, default=4.0)
     parser.add_argument("--alpha-trigram", type=float, default=2.0)
@@ -142,6 +143,7 @@ def main() -> None:
         args.structure_proxy_peak = True
         args.structure_proxy_candidate4 = True
         args.structure_proxy_agreement = True
+        args.structure_proxy_agreement_mass = True
     config = scale_config(
         ConkerTenConfig(
             base_config=base_cfg,
@@ -151,6 +153,7 @@ def main() -> None:
             structure_proxy_peak=args.structure_proxy_peak,
             structure_proxy_candidate4=args.structure_proxy_candidate4,
             structure_proxy_agreement=args.structure_proxy_agreement,
+            structure_proxy_agreement_mass=args.structure_proxy_agreement_mass,
             fixed_component_weights=parse_fixed_weights(args.fixed_weights),
             alpha_bigram=args.alpha_bigram,
             alpha_trigram=args.alpha_trigram,
@@ -169,7 +172,7 @@ def main() -> None:
     print(
         f"  variant={args.variant} scale={args.scale:.3f} freeze_base={config.freeze_base} "
         f"blend_mode={config.blend_mode} structure_proxy="
-        f"{int(config.structure_proxy_entropy) + int(config.structure_proxy_peak) + int(config.structure_proxy_candidate4) + int(config.structure_proxy_agreement)} "
+        f"{int(config.structure_proxy_entropy) + int(config.structure_proxy_peak) + int(config.structure_proxy_candidate4) + int(config.structure_proxy_agreement) + int(config.structure_proxy_agreement_mass)} "
         f"packed_tokens={tables.token_budget:,} trigram_buckets={tables.trigram_buckets:,} "
         f"alpha_bigram={config.alpha_bigram:.2f} alpha_trigram={config.alpha_trigram:.2f} "
         f"params={count_trainable_params(model):,} packed_bytes={tables.bytes_total:,}"
@@ -231,11 +234,13 @@ def main() -> None:
                 or config.structure_proxy_peak
                 or config.structure_proxy_candidate4
                 or config.structure_proxy_agreement
+                or config.structure_proxy_agreement_mass
             ),
             "structure_proxy_entropy": config.structure_proxy_entropy,
             "structure_proxy_peak": config.structure_proxy_peak,
             "structure_proxy_candidate4": config.structure_proxy_candidate4,
             "structure_proxy_agreement": config.structure_proxy_agreement,
+            "structure_proxy_agreement_mass": config.structure_proxy_agreement_mass,
             "fixed_component_weights": list(config.fixed_component_weights),
             "alpha_bigram": config.alpha_bigram,
             "alpha_trigram": config.alpha_trigram,

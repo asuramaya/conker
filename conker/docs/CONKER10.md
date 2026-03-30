@@ -163,9 +163,12 @@ The structure-proxy work is now split into a bridge layer called `giddy_up`:
 
 Current Conker bridge implementation lives in:
 
-- [giddy_up/features.py](/Users/asuramaya/Code/carving_machine_v3/conker-standalone/conker/src/giddy_up/features.py)
-- [run_conker10_structure_proxy_matrix.py](/Users/asuramaya/Code/carving_machine_v3/conker-standalone/conker/scripts/run_conker10_structure_proxy_matrix.py)
-- [giddy_up/conker10_adapter.py](/Users/asuramaya/Code/carving_machine_v3/conker-standalone/conker/src/giddy_up/conker10_adapter.py)
+- canonical bridge repo:
+  - [giddy-up](/Users/asuramaya/Code/carving_machine_v3/giddy-up)
+- current Conker-side consumer files:
+  - [giddy_up/features.py](/Users/asuramaya/Code/carving_machine_v3/conker/conker/src/giddy_up/features.py)
+  - [run_conker10_structure_proxy_matrix.py](/Users/asuramaya/Code/carving_machine_v3/conker/conker/scripts/run_conker10_structure_proxy_matrix.py)
+  - [giddy_up/conker10_adapter.py](/Users/asuramaya/Code/carving_machine_v3/conker/conker/src/giddy_up/conker10_adapter.py)
 
 Current read on the bounded synthetic pilot:
 
@@ -216,14 +219,14 @@ First real FineWeb-side `Giddy-Up` comparison on the official dataset surface:
 Results:
 
 - baseline:
-  - [json](/Users/asuramaya/Code/carving_machine_v3/conker-standalone/conker/out/conker10_giddyup_fineweb_baseline_seed42_2026-03-28.json)
+  - [json](/Users/asuramaya/Code/carving_machine_v3/conker/conker/out/conker10_giddyup_fineweb_baseline_seed42_2026-03-28.json)
   - test bits/token `8.3499`
 - `peak`:
-  - [json](/Users/asuramaya/Code/carving_machine_v3/conker-standalone/conker/out/conker10_giddyup_fineweb_peak_seed42_2026-03-28.json)
+  - [json](/Users/asuramaya/Code/carving_machine_v3/conker/conker/out/conker10_giddyup_fineweb_peak_seed42_2026-03-28.json)
   - test bits/token `8.0457`
 - `peak + soft candidate4`:
-  - [json](/Users/asuramaya/Code/carving_machine_v3/conker-standalone/conker/out/conker10_giddyup_fineweb_peak_candidate4_seed42_2026-03-28.json)
-  - [state](/Users/asuramaya/Code/carving_machine_v3/conker-standalone/conker/out/conker10_giddyup_fineweb_peak_candidate4_seed42_2026-03-28.npz)
+  - [json](/Users/asuramaya/Code/carving_machine_v3/conker/conker/out/conker10_giddyup_fineweb_peak_candidate4_seed42_2026-03-28.json)
+  - [state](/Users/asuramaya/Code/carving_machine_v3/conker/conker/out/conker10_giddyup_fineweb_peak_candidate4_seed42_2026-03-28.npz)
   - test bits/token `8.0348`
 
 Legality audit on the saved FineWeb bridge checkpoint:
@@ -243,3 +246,56 @@ Read:
 - the gain is modest but directional
 - the current saved FineWeb bridge checkpoint also passes the sampled behavioral legality audit
 - this is still a small pilot, not a frontier claim
+
+## FineWeb Giddy-Up Refresh
+
+**March 29, 2026**
+
+The bridge was rerun directly against:
+
+- `chronohorn/data/roots/fineweb10B_sp1024`
+
+using the same small recipe:
+
+- `window4 / 1x / seq64 / batch8 / 120 / lr1e-3`
+- packed tokens `200,000`
+- trigram buckets `2,048`
+- seed `42`
+
+One new causal proxy was added:
+
+- `agreement_mass`
+  - trigram mass assigned to the base model's top-4 candidates
+
+Results:
+
+- `peak + candidate4`:
+  - [json](/Users/asuramaya/Code/carving_machine_v3/conker/conker/out/conker10_giddyup_fineweb_peak_candidate4_seed42_2026-03-29.json)
+  - test `7.9664` bits/token, `3.2704 bpb`
+- `agreement`:
+  - [json](/Users/asuramaya/Code/carving_machine_v3/conker/conker/out/conker10_giddyup_fineweb_agreement_seed42_2026-03-29.json)
+  - test `8.0047` bits/token, `3.2861 bpb`
+- `peak + agreement_mass`:
+  - [json](/Users/asuramaya/Code/carving_machine_v3/conker/conker/out/conker10_giddyup_fineweb_peak_agreement_mass_seed42_2026-03-29.json)
+  - test `8.0233` bits/token, `3.2937 bpb`
+- baseline:
+  - [json](/Users/asuramaya/Code/carving_machine_v3/conker/conker/out/conker10_giddyup_fineweb_baseline_seed42_2026-03-29.json)
+  - test `8.0239` bits/token, `3.2940 bpb`
+- `peak`:
+  - [json](/Users/asuramaya/Code/carving_machine_v3/conker/conker/out/conker10_giddyup_fineweb_peak_seed42_2026-03-29.json)
+  - test `8.1386` bits/token, `3.3411 bpb`
+- `peak + agreement`:
+  - [json](/Users/asuramaya/Code/carving_machine_v3/conker/conker/out/conker10_giddyup_fineweb_peak_agreement_seed42_2026-03-29.json)
+  - test `8.1412` bits/token, `3.3421 bpb`
+- `agreement_mass`:
+  - [json](/Users/asuramaya/Code/carving_machine_v3/conker/conker/out/conker10_giddyup_fineweb_agreement_mass_seed42_2026-03-29.json)
+  - test `8.2241` bits/token, `3.3761 bpb`
+
+Read:
+
+- `peak + candidate4` still holds the bridge lead on the refreshed FineWeb run
+- binary `agreement` is mildly useful by itself, but does not compose well with `peak`
+- the new `agreement_mass` feature is too soft or too noisy in this small regime and should not be promoted as the next default bridge signal
+- the next `giddy_up` mutation should stay closer to the `candidate4` family:
+  - better soft candidate shaping
+  - or a gated controller path that only trusts agreement-style features when trigram confidence is already high

@@ -5,7 +5,6 @@ import argparse
 import json
 import os
 from pathlib import Path
-import shlex
 import subprocess
 
 
@@ -18,9 +17,12 @@ CASES = (
     ("peak", ("--structure-proxy-peak",)),
     ("candidate4", ("--structure-proxy-candidate4",)),
     ("agreement", ("--structure-proxy-agreement",)),
+    ("agreement_mass", ("--structure-proxy-agreement-mass",)),
     ("entropy_peak", ("--structure-proxy-entropy", "--structure-proxy-peak")),
     ("peak_candidate4", ("--structure-proxy-peak", "--structure-proxy-candidate4")),
     ("peak_agreement", ("--structure-proxy-peak", "--structure-proxy-agreement")),
+    ("peak_agreement_mass", ("--structure-proxy-peak", "--structure-proxy-agreement-mass")),
+    ("candidate4_agreement_mass", ("--structure-proxy-candidate4", "--structure-proxy-agreement-mass")),
     ("all", ("--structure-proxy",)),
 )
 
@@ -41,14 +43,22 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def _resolve_path(raw: str, base: Path) -> Path:
+    path = Path(raw)
+    if path.is_absolute():
+        return path
+    return (base / path).resolve()
+
+
 def _run_case(args: argparse.Namespace, name: str, feature_flags: tuple[str, ...]) -> dict:
-    out_json = Path(args.json_out).with_name(f"{Path(args.json_out).stem}_{name}.case.json")
+    json_base = Path(args.json_out)
+    out_json = json_base.with_name(f"{json_base.stem}_{name}.case.json")
+    out_json.parent.mkdir(parents=True, exist_ok=True)
     pieces = [
-        "MLX_DISABLE_METAL=1",
         "python3",
         str(REPO_ROOT / "conker" / "scripts" / "run_conker10_golf_bridge.py"),
         "--data-root",
-        args.data_root,
+        str(args.data_root),
         "--seed",
         str(args.seed),
         "--steps",
@@ -77,11 +87,10 @@ def _run_case(args: argparse.Namespace, name: str, feature_flags: tuple[str, ...
         str(out_json),
         *feature_flags,
     ]
-    quoted = " ".join(shlex.quote(part) for part in pieces)
     subprocess.run(
-        ["/bin/zsh", "-lc", quoted],
+        pieces,
         cwd=REPO_ROOT,
-        env=dict(os.environ),
+        env=dict(os.environ, MLX_DISABLE_METAL="1"),
         check=True,
     )
     data = json.loads(out_json.read_text())
@@ -97,6 +106,10 @@ def _run_case(args: argparse.Namespace, name: str, feature_flags: tuple[str, ...
 
 def main() -> None:
     args = parse_args()
+    launch_cwd = Path.cwd()
+    args.data_root = str(_resolve_path(args.data_root, launch_cwd))
+    args.json_out = str(_resolve_path(args.json_out, launch_cwd))
+    args.md_out = str(_resolve_path(args.md_out, launch_cwd))
     rows = [_run_case(args, name, flags) for name, flags in CASES]
     rows.sort(key=lambda row: row["test_bits_per_token"])
     result = {
@@ -123,6 +136,7 @@ def main() -> None:
             f"| {row['case']} | {row['test_bits_per_token']:.4f} | {row['train_bits_per_token']:.4f} | "
             f"`{' '.join(row['flags'])}` |"
         )
+    Path(args.md_out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.md_out).write_text("\n".join(lines) + "\n")
 
 
