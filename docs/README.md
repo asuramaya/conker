@@ -1,30 +1,32 @@
 # Docs
 
-This directory is the standalone navigation layer for the extracted repo.
+This directory is the navigation layer for the public `conker` repo.
 
-Use it first. The original `conker/docs/` tree is still present, but many files there were copied verbatim from the lab repo and are best treated as archival branch notes.
+Use this folder first. The inherited detailed note store still lives under [`../conker/docs`](../conker/docs/README.md), but that subtree is flatter and more archival.
 
-Primary entry points:
+## Start Here
 
 - [Current Frontier](./current_frontier.md)
 - [Validity](./validity.md)
 - [Negative Results](./negative_results.md)
 - [Compression Matrix](./matrices/COMPRESSION_MATRIX.md)
 
-Live reading order:
+## Reading Order
 
-- `current_frontier`: current clean anchor, invalidation status, and active direction
-- `validity`: the two-boundary model of legality
-- `negative_results`: what died and what it taught
+1. [Current Frontier](./current_frontier.md)
+2. [Validity](./validity.md)
+3. [Negative Results](./negative_results.md)
+4. [Detailed Branch Notes](../conker/docs/README.md)
 
-Archival branch records:
+## Branch Records
 
-- [Conker-4b](../conker/docs/CONKER4B.md)
-- [Conker-5](./branches/CONKER5.md)
-- [Conker-6](./branches/CONKER6.md)
-- [Conker-7](./branches/CONKER7.md)
-- [Conker-8](../conker/docs/CONKER8.md)
-- [Conker-9](../conker/docs/CONKER9.md)
-- [Conker-10](../conker/docs/CONKER10.md)
-- [Conker-11](../conker/docs/CONKER11.md)
-- [Conker-12](../conker/docs/CONKER12.md)
+- Active / post-reset notes live in [`../conker/docs`](../conker/docs/README.md)
+- Early archived notes live in [`./archive/README.md`](./archive/README.md)
+- Invalidated historical branches live in [`./branches/README.md`](./branches/README.md)
+
+## Related Repos
+
+- [`asuramaya/blinx`](https://github.com/asuramaya/blinx)
+- [`asuramaya/giddy-up`](https://github.com/asuramaya/giddy-up)
+- [`asuramaya/conker-detect`](https://github.com/asuramaya/conker-detect)
+- [`asuramaya/conker-ledger`](https://github.com/asuramaya/conker-ledger)
