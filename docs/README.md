@@ -6,6 +6,8 @@ Use this folder first. The inherited detailed note store still lives under [`../
 
 ## Start Here
 
+- [Presentation](./presentation.md)
+- [Rescue](./rescue.md)
 - [Current Frontier](./current_frontier.md)
 - [Validity](./validity.md)
 - [Negative Results](./negative_results.md)
@@ -14,9 +16,11 @@ Use this folder first. The inherited detailed note store still lives under [`../
 ## Reading Order
 
 1. [Current Frontier](./current_frontier.md)
-2. [Validity](./validity.md)
-3. [Negative Results](./negative_results.md)
-4. [Detailed Branch Notes](../conker/docs/README.md)
+2. [Presentation](./presentation.md)
+3. [Validity](./validity.md)
+4. [Rescue](./rescue.md)
+5. [Negative Results](./negative_results.md)
+6. [Detailed Branch Notes](../conker/docs/README.md)
 
 ## Branch Records
 

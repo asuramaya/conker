@@ -118,6 +118,8 @@ python3 conker/scripts/run_conker7_checkpoint_eval.py \
 ## Docs
 
 - [Docs Index](./docs/README.md)
+- [Presentation](./docs/presentation.md)
+- [Rescue](./docs/rescue.md)
 - [Current Frontier](./docs/current_frontier.md)
 - [Validity](./docs/validity.md)
 - [Negative Results](./docs/negative_results.md)
