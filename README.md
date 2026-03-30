@@ -20,9 +20,10 @@ This repo keeps:
 
 External tooling now lives in sibling repos:
 
+- [`blinx`](https://github.com/asuramaya/blinx): noncausal lossless-compression and oracle-discovery line
 - [`conker-detect`](https://github.com/asuramaya/conker-detect): structural, artifact-boundary, and legality auditing
 - [`conker-ledger`](https://github.com/asuramaya/conker-ledger): backlog, lineage, survival, and public validity bundles
-- [`giddy-up`](/Users/asuramaya/Code/carving_machine_v3/giddy-up): oracle/bridge layer between BLINX discovery and causal Conker features
+- [`giddy-up`](https://github.com/asuramaya/giddy-up): oracle/bridge layer between BLINX discovery and causal Conker features
 
 ## Current State
 

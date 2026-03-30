@@ -31,22 +31,25 @@ Current repo state:
 
 Start here:
 
-- [CURRENT_FRONTIER.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CURRENT_FRONTIER.md)
-- [COMPRESSION_MATRIX.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/COMPRESSION_MATRIX.md)
-- [HANDOFF.md](/Users/asuramaya/Code/carving_machine_v3/conker/legacy_lab/HANDOFF.md)
-- [CONKER11.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER11.md)
-- [CONKER12.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER12.md)
-- [CONKER13.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER13.md)
+- [CURRENT_FRONTIER.md](./docs/CURRENT_FRONTIER.md)
+- [COMPRESSION_MATRIX.md](./docs/COMPRESSION_MATRIX.md)
+- [VALIDITY_WORKFLOW.md](./docs/VALIDITY_WORKFLOW.md)
+- [HANDOFF.md](../legacy_lab/HANDOFF.md)
+- [CONKER11.md](./docs/CONKER11.md)
+- [CONKER12.md](./docs/CONKER12.md)
+- [CONKER13.md](./docs/CONKER13.md)
 
 Companion public tools:
 
-- `giddy-up`: oracle / bridge layer between BLINX and causal Conker
-- `conker-detect`: structural / legality auditor
-- `conker-ledger`: backlog / lineage / survival analyzer
+- [`giddy-up`](https://github.com/asuramaya/giddy-up): oracle / bridge layer between BLINX and causal Conker
+- [`blinx`](https://github.com/asuramaya/blinx): noncausal oracle and lossless-compression sibling
+- [`conker-detect`](https://github.com/asuramaya/conker-detect): structural / legality auditor
+- [`conker-ledger`](https://github.com/asuramaya/conker-ledger): backlog / lineage / survival analyzer
 
 Unified workflow:
 
 - use `conker` as the umbrella entrypoint
 - keep audit logic in `conker-detect`
 - keep bundle/report logic in `conker-ledger`
-- see [VALIDITY_WORKFLOW.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/VALIDITY_WORKFLOW.md)
+- keep bridge logic canonical in `giddy-up`
+- see [VALIDITY_WORKFLOW.md](./docs/VALIDITY_WORKFLOW.md)

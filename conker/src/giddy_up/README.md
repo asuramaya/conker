@@ -1,6 +1,6 @@
 # Giddy-Up Mirror
 
-Canonical bridge home now lives in [giddy-up](/Users/asuramaya/Code/carving_machine_v3/giddy-up).
+Canonical bridge home now lives in [`asuramaya/giddy-up`](https://github.com/asuramaya/giddy-up).
 
 This folder is the Conker-side consumer mirror:
 
