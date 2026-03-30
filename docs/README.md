@@ -7,6 +7,7 @@ Start here if you want the current repo story. The deeper branch-note store stil
 ## Start Here
 
 - [Status](../STATUS.md)
+- [Absorbed Repos](./absorbed_repos.md)
 - [Salvage Matrix](../SALVAGE_MATRIX.md)
 - [Presentation](./presentation.md)
 - [Parallel Exploration](./parallel_exploration.md)
@@ -19,14 +20,15 @@ Start here if you want the current repo story. The deeper branch-note store stil
 ## Reading Order
 
 1. [Status](../STATUS.md)
-2. [Salvage Matrix](../SALVAGE_MATRIX.md)
-3. [Presentation](./presentation.md)
-4. [Parallel Exploration](./parallel_exploration.md)
-5. [Current Frontier](./current_frontier.md)
-6. [Validity](./validity.md)
-7. [Negative Results](./negative_results.md)
-8. [Rescue](./rescue.md)
-9. [Detailed Branch Notes](../conker/docs/README.md)
+2. [Absorbed Repos](./absorbed_repos.md)
+3. [Salvage Matrix](../SALVAGE_MATRIX.md)
+4. [Presentation](./presentation.md)
+5. [Parallel Exploration](./parallel_exploration.md)
+6. [Current Frontier](./current_frontier.md)
+7. [Validity](./validity.md)
+8. [Negative Results](./negative_results.md)
+9. [Rescue](./rescue.md)
+10. [Detailed Branch Notes](../conker/docs/README.md)
 
 ## Branch Records
 
@@ -34,9 +36,9 @@ Start here if you want the current repo story. The deeper branch-note store stil
 - Early archived notes live in [`./archive/README.md`](./archive/README.md)
 - Invalidated historical branches live in [`./branches/README.md`](./branches/README.md)
 
-## Related Repos
+## Related Trees
 
-- [`asuramaya/blinx`](https://github.com/asuramaya/blinx)
-- [`asuramaya/giddy-up`](https://github.com/asuramaya/giddy-up)
+- [Absorbed BLINX](../blinx/README.md)
+- [Absorbed Giddy-Up](../giddy-up/README.md)
 - [`asuramaya/conker-detect`](https://github.com/asuramaya/conker-detect)
 - [`asuramaya/conker-ledger`](https://github.com/asuramaya/conker-ledger)

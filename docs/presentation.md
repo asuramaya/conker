@@ -4,6 +4,9 @@ This page is the shortest current read on `conker`.
 
 Use it when you want the public story without stepping through the full branch archive.
 
+`Conker` is now also the single private home for the absorbed [`BLINX`](../blinx/README.md)
+and [`Giddy-Up`](../giddy-up/README.md) trees.
+
 ## What Survives
 
 `Conker` is the causal line. The dramatic pre-reset `Conker-5/7` rows do not survive audit; the clean anchor is patched strict `Conker-4b`.
@@ -33,9 +36,9 @@ The core post-reset finding is simple: memory alone has been weak so far, legal 
 7. [Rescue](./rescue.md)
 8. [Detailed Branch Notes](../conker/docs/README.md)
 
-## Companion Repos
+## Related Trees
 
-- [`asuramaya/blinx`](https://github.com/asuramaya/blinx)
-- [`asuramaya/giddy-up`](https://github.com/asuramaya/giddy-up)
+- [Absorbed BLINX](../blinx/README.md)
+- [Absorbed Giddy-Up](../giddy-up/README.md)
 - [`asuramaya/conker-detect`](https://github.com/asuramaya/conker-detect)
 - [`asuramaya/conker-ledger`](https://github.com/asuramaya/conker-ledger)

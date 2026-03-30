@@ -6,6 +6,8 @@ This page explains what `conker` preserves on purpose and how to read the rescue
 
 - the old non-git lab subtree now lives under [`../legacy_lab`](../legacy_lab/README.md)
 - the inherited dense branch-note store lives under [`../conker/docs`](../conker/docs/README.md)
+- the former standalone `BLINX` repo now lives under [`../blinx`](../blinx/README.md)
+- the former standalone `Giddy-Up` repo now lives under [`../giddy-up`](../giddy-up/README.md)
 - invalidated branch notes are indexed in [`./branches/README.md`](./branches/README.md)
 - early archived notes are indexed in [`./archive/README.md`](./archive/README.md)
 
@@ -14,11 +16,13 @@ This page explains what `conker` preserves on purpose and how to read the rescue
 - the invalid branches still carry real architectural lessons
 - the handoff and matrices still explain how the line evolved
 - the legacy lab tree is useful for forensic comparison and provenance
+- the absorbed repos preserve their own docs, outputs, and unmerged scraps in one place
 
 ## How To Read It
 
 - treat `docs/` as the curated public layer
 - treat `conker/docs/` as the detailed branch-note layer
+- treat `blinx/` and `giddy-up/` as absorbed subtrees, not separate canonical repos
 - treat `legacy_lab/` as preserved history, not current runtime truth
 
 See also:

@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "giddy-up"
+version = "0.1.0"
+description = "Bridge layer between BLINX oracle work and causal Conker features."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "numpy",
+]
+
+[tool.setuptools.packages.find]
+include = ["giddy_up*"]

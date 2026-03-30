@@ -4,7 +4,11 @@ As of March 29, 2026.
 
 ## Role
 
-`Conker` is the causal runtime and submission line.
+`Conker` is now the canonical private repo for the whole active tree:
+
+- causal runtime and submission work
+- absorbed `BLINX` noncausal codec/oracle work in [`./blinx`](./blinx/README.md)
+- absorbed `Giddy-Up` bridge work in [`./giddy-up`](./giddy-up/README.md)
 
 ## Current Public State
 
@@ -51,9 +55,9 @@ Active exploratory branches:
 - [Validity](./docs/validity.md)
 - [Negative Results](./docs/negative_results.md)
 
-## Companion Repos
+## Related Trees
 
-- [`asuramaya/blinx`](https://github.com/asuramaya/blinx)
-- [`asuramaya/giddy-up`](https://github.com/asuramaya/giddy-up)
+- [Absorbed BLINX](./blinx/README.md)
+- [Absorbed Giddy-Up](./giddy-up/README.md)
 - [`asuramaya/conker-detect`](https://github.com/asuramaya/conker-detect)
 - [`asuramaya/conker-ledger`](https://github.com/asuramaya/conker-ledger)

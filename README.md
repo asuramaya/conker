@@ -4,12 +4,13 @@
 
 This repo reflects the March 28, 2026 reset. The old pre-fix `Conker-5/7` frontier is historical but invalidated; the clean surviving anchor is patched strict `Conker-4b`, and the active post-reset work is the `Conker-10` through `Conker-13` restart line.
 
-This repo keeps the causal runtime, training code, branch notes, and submission-facing utilities. Closely related tooling now lives in sibling repos:
+This repo now carries the full local research tree. The former `BLINX` and
+`Giddy-Up` repos have been absorbed as preserved subtrees:
 
-- [`blinx`](https://github.com/asuramaya/blinx): noncausal lossless-compression and oracle-discovery line
+- [`blinx/`](./blinx/README.md): noncausal lossless-compression and oracle-discovery line
+- [`giddy-up/`](./giddy-up/README.md): oracle/bridge layer between BLINX discovery and causal Conker features
 - [`conker-detect`](https://github.com/asuramaya/conker-detect): structural, artifact-boundary, and legality auditing
 - [`conker-ledger`](https://github.com/asuramaya/conker-ledger): backlog, lineage, survival, and public validity bundles
-- [`giddy-up`](https://github.com/asuramaya/giddy-up): oracle/bridge layer between BLINX discovery and causal Conker features
 
 ## Current State
 
@@ -111,6 +112,7 @@ python3 conker/scripts/run_conker7_checkpoint_eval.py \
 ## Docs
 
 - [Docs Index](./docs/README.md)
+- [Absorbed Repos](./docs/absorbed_repos.md)
 - [Status](./STATUS.md)
 - [Salvage Matrix](./SALVAGE_MATRIX.md)
 - [Presentation](./docs/presentation.md)
