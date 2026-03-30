@@ -996,7 +996,7 @@ Previously best apparent row, seed `42`:
 - `int6 0.0740`
 - payload `~0.254 MB`
 - artifact:
-  [conker6_cacheonly_seq256_steps1000_full_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_cacheonly_seq256_steps1000_full_2026-03-28.json)
+  [conker6_cacheonly_seq256_steps1000_full_2026-03-28.json](../../legacy_lab/out/conker6_cacheonly_seq256_steps1000_full_2026-03-28.json)
 
 Fresh-init legality audit on the same recipe:
 
@@ -1004,7 +1004,7 @@ Fresh-init legality audit on the same recipe:
 - row-wise future invariance: exact `0`
 - flat-stream invariance: exact `0`
 - artifact:
-  [conker6_legality_cacheonly_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_legality_cacheonly_2026-03-28.json)
+  [conker6_legality_cacheonly_2026-03-28.json](../../legacy_lab/out/conker6_legality_cacheonly_2026-03-28.json)
 
 Trainable-subset attack:
 
@@ -1016,8 +1016,8 @@ Trainable-subset attack:
 
 Artifacts:
 
-- [conker6_cacheonly_seq256_steps1000_fixedbuffers_full_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_cacheonly_seq256_steps1000_fixedbuffers_full_2026-03-28.json)
-- [conker6_cacheonly_seq256_steps1000_maskonly_full_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_cacheonly_seq256_steps1000_maskonly_full_2026-03-28.json)
+- [conker6_cacheonly_seq256_steps1000_fixedbuffers_full_2026-03-28.json](../../legacy_lab/out/conker6_cacheonly_seq256_steps1000_fixedbuffers_full_2026-03-28.json)
+- [conker6_cacheonly_seq256_steps1000_maskonly_full_2026-03-28.json](../../legacy_lab/out/conker6_cacheonly_seq256_steps1000_maskonly_full_2026-03-28.json)
 
 That fresh-init audit turned out to be misleading.
 
@@ -1038,8 +1038,8 @@ Discounted backoff experiments, full held-out:
 
 Artifacts:
 
-- [conker6_wittenbell_seq256_steps1000_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_wittenbell_seq256_steps1000_2026-03-28.json)
-- [conker6_absdisc_seq256_steps1000_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_absdisc_seq256_steps1000_2026-03-28.json)
+- [conker6_wittenbell_seq256_steps1000_2026-03-28.json](../../legacy_lab/out/conker6_wittenbell_seq256_steps1000_2026-03-28.json)
+- [conker6_absdisc_seq256_steps1000_2026-03-28.json](../../legacy_lab/out/conker6_absdisc_seq256_steps1000_2026-03-28.json)
 
 So proper textbook smoothing has not yet beaten raw hard exact backoff here.
 
@@ -1050,8 +1050,8 @@ Two sharp probes:
 
 Artifacts:
 
-- [conker6_cacheonly_seq256_steps1_full_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_cacheonly_seq256_steps1_full_2026-03-28.json)
-- [conker6_cacheonly_seq256_steps1000_noexact3_full_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_cacheonly_seq256_steps1000_noexact3_full_2026-03-28.json)
+- [conker6_cacheonly_seq256_steps1_full_2026-03-28.json](../../legacy_lab/out/conker6_cacheonly_seq256_steps1_full_2026-03-28.json)
+- [conker6_cacheonly_seq256_steps1000_noexact3_full_2026-03-28.json](../../legacy_lab/out/conker6_cacheonly_seq256_steps1000_noexact3_full_2026-03-28.json)
 
 Interpretation:
 
@@ -1067,7 +1067,7 @@ Mask-geometry ablation on the trained legal winner:
 - magnitude prune `90/95/98%`: `4.4732 / 4.3152 / 4.1847`
 - row-top-k `16/8`: `4.5754 / 4.3589`
 - artifact:
-  [conker6_mask_ablation_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_mask_ablation_2026-03-28.json)
+  [conker6_mask_ablation_2026-03-28.json](../../legacy_lab/out/conker6_mask_ablation_2026-03-28.json)
 
 Deviation read:
 
@@ -1081,14 +1081,14 @@ So the `Conker-6` win is not a sparse-selector trick. It is a dense learned caus
 Mask dump + structure attack:
 
 - raw `256x256` mask dump:
-  [npy](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_mask_geometry_2026-03-28.mask.npy)
-  [csv](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_mask_geometry_2026-03-28.mask.csv)
+  [npy](../../legacy_lab/out/conker6_mask_geometry_2026-03-28.mask.npy)
+  [csv](../../legacy_lab/out/conker6_mask_geometry_2026-03-28.mask.csv)
 - visuals:
-  [mask](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_mask_geometry_2026-03-28.mask.png)
-  [lag-mean](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_mask_geometry_2026-03-28.lag_mean_mask.png)
-  [lag-mean diff](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_mask_geometry_2026-03-28.lag_mean_diff.png)
+  [mask](../../legacy_lab/out/conker6_mask_geometry_2026-03-28.mask.png)
+  [lag-mean](../../legacy_lab/out/conker6_mask_geometry_2026-03-28.lag_mean_mask.png)
+  [lag-mean diff](../../legacy_lab/out/conker6_mask_geometry_2026-03-28.lag_mean_diff.png)
 - summary:
-  [conker6_mask_geometry_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_mask_geometry_2026-03-28.json)
+  [conker6_mask_geometry_2026-03-28.json](../../legacy_lab/out/conker6_mask_geometry_2026-03-28.json)
 
 What the geometry says:
 
@@ -1120,7 +1120,7 @@ So the current `Conker-6` mask is not just “close enough” lag geometry. It d
 Cross-seed residual test:
 
 - summary:
-  [conker6_seed_residual_compare_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_seed_residual_compare_2026-03-28.json)
+  [conker6_seed_residual_compare_2026-03-28.json](../../legacy_lab/out/conker6_seed_residual_compare_2026-03-28.json)
 
 Three seeds all stay in the same score regime:
 
@@ -1141,7 +1141,7 @@ Not stable across seeds:
 
 Residual-substitution attack changed that again:
 
-- [conker6_residual_substitution_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_residual_substitution_2026-03-28.json)
+- [conker6_residual_substitution_2026-03-28.json](../../legacy_lab/out/conker6_residual_substitution_2026-03-28.json)
 - `baseline_seed42_full`: `0.0720933 bpb`
 - `baseline_seed42_strictlower`: `5.7521`
 - `toeplitz_lower_plus_upperdiag_seed42`: `0.0721075`
@@ -1166,9 +1166,9 @@ So the lower residual is not the real source of the win. The decisive part is th
 
 Artifacts:
 
-- [conker7.py](/Users/asuramaya/Code/carving_machine_v3/conker/src/conker7.py)
-- [run_conker7_golf_bridge.py](/Users/asuramaya/Code/carving_machine_v3/conker/scripts/run_conker7_golf_bridge.py)
-- [CONKER7.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER7.md)
+- [conker7.py](../src/conker7.py)
+- [run_conker7_golf_bridge.py](../scripts/run_conker7_golf_bridge.py)
+- [CONKER7.md](./CONKER7.md)
 
 Seed `42`, `window4 / 10x / 256 / batch16 / lr5e-4`:
 

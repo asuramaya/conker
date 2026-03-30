@@ -33,9 +33,9 @@ Current repo state:
 
 Start here:
 
-- [CURRENT_FRONTIER.md](/Users/asuramaya/Code/carving_machine_v3/conker/legacy_lab/docs/CURRENT_FRONTIER.md)
-- [COMPRESSION_MATRIX.md](/Users/asuramaya/Code/carving_machine_v3/conker/legacy_lab/docs/COMPRESSION_MATRIX.md)
-- [HANDOFF.md](/Users/asuramaya/Code/carving_machine_v3/conker/legacy_lab/HANDOFF.md)
+- [CURRENT_FRONTIER.md](./docs/CURRENT_FRONTIER.md)
+- [COMPRESSION_MATRIX.md](./docs/COMPRESSION_MATRIX.md)
+- [HANDOFF.md](./HANDOFF.md)
 
 Companion public tools:
 
@@ -47,4 +47,4 @@ Unified workflow:
 - use `conker` as the umbrella entrypoint
 - keep audit logic in `conker-detect`
 - keep bundle/report logic in `conker-ledger`
-- see [VALIDITY_WORKFLOW.md](/Users/asuramaya/Code/carving_machine_v3/conker/legacy_lab/docs/VALIDITY_WORKFLOW.md)
+- see [VALIDITY_WORKFLOW.md](./docs/VALIDITY_WORKFLOW.md)

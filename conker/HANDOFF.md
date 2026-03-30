@@ -1057,10 +1057,10 @@ Negative `Conker-5` pure learned-discriminator probe, seed `42`:
 
 Artifacts:
 
-- [CONKER6.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER6.md)
-- [conker6.py](/Users/asuramaya/Code/carving_machine_v3/conker/src/conker6.py)
-- [run_conker6_golf_bridge.py](/Users/asuramaya/Code/carving_machine_v3/conker/scripts/run_conker6_golf_bridge.py)
-- [audit_conker6_legality.py](/Users/asuramaya/Code/carving_machine_v3/conker/scripts/audit_conker6_legality.py)
+- [CONKER6.md](./docs/CONKER6.md)
+- [conker6.py](./src/conker6.py)
+- [run_conker6_golf_bridge.py](./scripts/run_conker6_golf_bridge.py)
+- [audit_conker6_legality.py](./scripts/audit_conker6_legality.py)
 
 Originally best apparent row, seed `42`:
 
@@ -1077,7 +1077,7 @@ Fresh-init legality attack on that row:
 - row-wise future invariance: exact `0`
 - flat-stream invariance: exact `0`
 - audit:
-  [conker6_legality_cacheonly_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_legality_cacheonly_2026-03-28.json)
+  [conker6_legality_cacheonly_2026-03-28.json](../legacy_lab/out/conker6_legality_cacheonly_2026-03-28.json)
 
 Trainable-subset attack:
 
@@ -1126,7 +1126,7 @@ Mask-geometry ablation on the trained legal winner:
 - magnitude prune `90/95/98%`: `4.4732 / 4.3152 / 4.1847`
 - row-top-k `16/8`: `4.5754 / 4.3589`
 - artifact:
-  [conker6_mask_ablation_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_mask_ablation_2026-03-28.json)
+  [conker6_mask_ablation_2026-03-28.json](../legacy_lab/out/conker6_mask_ablation_2026-03-28.json)
 
 Read:
 
@@ -1138,14 +1138,14 @@ Read:
 Matrix dump + structure attack:
 
 - raw mask:
-  [npy](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_mask_geometry_2026-03-28.mask.npy)
-  [csv](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_mask_geometry_2026-03-28.mask.csv)
+  [npy](../legacy_lab/out/conker6_mask_geometry_2026-03-28.mask.npy)
+  [csv](../legacy_lab/out/conker6_mask_geometry_2026-03-28.mask.csv)
 - visuals:
-  [mask](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_mask_geometry_2026-03-28.mask.png)
-  [lag-mean](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_mask_geometry_2026-03-28.lag_mean_mask.png)
-  [lag-mean diff](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_mask_geometry_2026-03-28.lag_mean_diff.png)
+  [mask](../legacy_lab/out/conker6_mask_geometry_2026-03-28.mask.png)
+  [lag-mean](../legacy_lab/out/conker6_mask_geometry_2026-03-28.lag_mean_mask.png)
+  [lag-mean diff](../legacy_lab/out/conker6_mask_geometry_2026-03-28.lag_mean_diff.png)
 - summary:
-  [conker6_mask_geometry_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_mask_geometry_2026-03-28.json)
+  [conker6_mask_geometry_2026-03-28.json](../legacy_lab/out/conker6_mask_geometry_2026-03-28.json)
 
 Important read:
 
@@ -1170,11 +1170,11 @@ So the next attack is not “compress the mask because it looks simple.” It is
 Cross-seed residual comparison:
 
 - summary:
-  [conker6_seed_residual_compare_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_seed_residual_compare_2026-03-28.json)
+  [conker6_seed_residual_compare_2026-03-28.json](../legacy_lab/out/conker6_seed_residual_compare_2026-03-28.json)
 - per-seed dumps:
-  [seed42](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_seed_residual_compare_2026-03-28_seed42)
-  [seed43](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_seed_residual_compare_2026-03-28_seed43)
-  [seed44](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_seed_residual_compare_2026-03-28_seed44)
+  [seed42](../legacy_lab/out/conker6_seed_residual_compare_2026-03-28_seed42)
+  [seed43](../legacy_lab/out/conker6_seed_residual_compare_2026-03-28_seed43)
+  [seed44](../legacy_lab/out/conker6_seed_residual_compare_2026-03-28_seed44)
 
 Read:
 
@@ -1187,7 +1187,7 @@ Read:
 
 Residual-substitution attack:
 
-- [conker6_residual_substitution_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker6_residual_substitution_2026-03-28.json)
+- [conker6_residual_substitution_2026-03-28.json](../legacy_lab/out/conker6_residual_substitution_2026-03-28.json)
 - `baseline_seed42_full`: `0.0720933 bpb`
 - `baseline_seed42_strictlower`: `5.7521`
 - `toeplitz_lower_plus_upperdiag_seed42`: `0.0721075`
@@ -1204,9 +1204,9 @@ Current read:
 
 New branch:
 
-- [conker7.py](/Users/asuramaya/Code/carving_machine_v3/conker/src/conker7.py)
-- [run_conker7_golf_bridge.py](/Users/asuramaya/Code/carving_machine_v3/conker/scripts/run_conker7_golf_bridge.py)
-- [CONKER7.md](/Users/asuramaya/Code/carving_machine_v3/conker/conker/docs/CONKER7.md)
+- [conker7.py](./src/conker7.py)
+- [run_conker7_golf_bridge.py](./scripts/run_conker7_golf_bridge.py)
+- [CONKER7.md](./docs/CONKER7.md)
 
 Purpose:
 
@@ -1222,7 +1222,7 @@ Future-only teacher, `exact2 + exact3`, `500` steps:
 - `int6 0.6887`
 - `int4 0.9742`
 - artifact:
-  [conker7_future_exact23_seq256_steps500_seed42_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_future_exact23_seq256_steps500_seed42_2026-03-28.json)
+  [conker7_future_exact23_seq256_steps500_seed42_2026-03-28.json](../legacy_lab/out/conker7_future_exact23_seq256_steps500_seed42_2026-03-28.json)
 
 Future-only teacher, `exact2 + exact3`, `1000` steps:
 
@@ -1230,13 +1230,13 @@ Future-only teacher, `exact2 + exact3`, `1000` steps:
 - `int6 0.6282`
 - `int4 0.8132`
 - artifact:
-  [conker7_future_exact23_seq256_steps1000_seed42_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_future_exact23_seq256_steps1000_seed42_2026-03-28.json)
+  [conker7_future_exact23_seq256_steps1000_seed42_2026-03-28.json](../legacy_lab/out/conker7_future_exact23_seq256_steps1000_seed42_2026-03-28.json)
 
 Future-only rich teacher (`exact2 + exact3 + special2 + number2 + markup2 + attr2 + delim2`), `500` steps:
 
 - unstable `NaN`
 - artifact:
-  [conker7_future_rich_seq256_steps500_seed42_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_future_rich_seq256_steps500_seed42_2026-03-28.json)
+  [conker7_future_rich_seq256_steps500_seed42_2026-03-28.json](../legacy_lab/out/conker7_future_rich_seq256_steps500_seed42_2026-03-28.json)
 
 Read:
 
@@ -1259,7 +1259,7 @@ Completed sequence on the same seed-`42` branch:
   - `int6 0.5915`
   - `int4 0.7612`
   - artifact:
-    [conker7_future_exact23_tw01_seq256_steps1000_seed42_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_future_exact23_tw01_seq256_steps1000_seed42_2026-03-28.json)
+    [conker7_future_exact23_tw01_seq256_steps1000_seed42_2026-03-28.json](../legacy_lab/out/conker7_future_exact23_tw01_seq256_steps1000_seed42_2026-03-28.json)
 - future `exact2 + exact3`, `teacher_weight=0.25`, `1000` steps:
   - fp16 `0.5945`
   - `int6 0.6065`
@@ -1273,13 +1273,13 @@ Completed sequence on the same seed-`42` branch:
   - `int6 0.5905`
   - `int4 0.7607`
   - artifact:
-    [conker7_bidirectional_exact23_tw01_seq256_steps1000_seed42_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_bidirectional_exact23_tw01_seq256_steps1000_seed42_2026-03-28.json)
+    [conker7_bidirectional_exact23_tw01_seq256_steps1000_seed42_2026-03-28.json](../legacy_lab/out/conker7_bidirectional_exact23_tw01_seq256_steps1000_seed42_2026-03-28.json)
 - bidirectional `exact2 + exact3`, `teacher_weight=0.10`, `teacher_start_step=500`, `1000` steps:
   - fp16 `0.5666`
   - `int6 0.5789`
   - `int4 0.7370`
   - artifact:
-    [conker7_bidirectional_exact23_tw01_start500_seq256_steps1000_seed42_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_bidirectional_exact23_tw01_start500_seq256_steps1000_seed42_2026-03-28.json)
+    [conker7_bidirectional_exact23_tw01_start500_seq256_steps1000_seed42_2026-03-28.json](../legacy_lab/out/conker7_bidirectional_exact23_tw01_start500_seq256_steps1000_seed42_2026-03-28.json)
 
 Warm-start from the legal tandem `Conker-5` `seq256 / 1500 / lr5e-4` checkpoint is the breakthrough:
 
@@ -1288,13 +1288,13 @@ Warm-start from the legal tandem `Conker-5` `seq256 / 1500 / lr5e-4` checkpoint 
   - `int6 0.5480`
   - `int4 0.6304`
   - artifact:
-    [conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps500_seed42_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps500_seed42_2026-03-28.json)
+    [conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps500_seed42_2026-03-28.json](../legacy_lab/out/conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps500_seed42_2026-03-28.json)
 - bidirectional `exact2 + exact3`, `teacher_weight=0.10`, warm-start, `1000` steps:
   - fp16 `0.5183`
   - `int6 0.5301`
   - `int4 0.6140`
   - artifact:
-    [conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json)
+    [conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json](../legacy_lab/out/conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json)
 
 Current read:
 
@@ -1307,23 +1307,23 @@ Current read:
 Follow-up queue landed:
 
 - queue:
-  [run_conker7_followup_queue.zsh](/Users/asuramaya/Code/carving_machine_v3/conker/scripts/run_conker7_followup_queue.zsh)
+  [run_conker7_followup_queue.zsh](./scripts/run_conker7_followup_queue.zsh)
 - evaluator:
-  [run_conker7_checkpoint_eval.py](/Users/asuramaya/Code/carving_machine_v3/conker/scripts/run_conker7_checkpoint_eval.py)
+  [run_conker7_checkpoint_eval.py](./scripts/run_conker7_checkpoint_eval.py)
 - log:
-  [conker7_followup_queue_2026-03-28.log](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_followup_queue_2026-03-28.log)
+  [conker7_followup_queue_2026-03-28.log](../legacy_lab/out/conker7_followup_queue_2026-03-28.log)
 
 Honest eval on the saved seed-42 warm-start winner:
 
 - fp16 full split (`62,021,632` tokens):
   - `0.5283 bpb`
   - artifact:
-    [conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps1000_seed42_fullval_test_none_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps1000_seed42_fullval_test_none_2026-03-28.json)
+    [conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps1000_seed42_fullval_test_none_2026-03-28.json](../legacy_lab/out/conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps1000_seed42_fullval_test_none_2026-03-28.json)
 - `int6` full split:
   - `0.5315 bpb`
   - compressed artifact `4,153,894` bytes
   - artifact:
-    [conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps1000_seed42_fullval_test_int6_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps1000_seed42_fullval_test_int6_2026-03-28.json)
+    [conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps1000_seed42_fullval_test_int6_2026-03-28.json](../legacy_lab/out/conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps1000_seed42_fullval_test_int6_2026-03-28.json)
 
 Warm-start sweep around the winner, seed `42`:
 
@@ -1332,30 +1332,30 @@ Warm-start sweep around the winner, seed `42`:
   - `int6 0.5249`
   - `int4 0.6090`
   - artifact:
-    [conker7_bidirectional_exact23_tw0p05_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_bidirectional_exact23_tw0p05_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json)
+    [conker7_bidirectional_exact23_tw0p05_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json](../legacy_lab/out/conker7_bidirectional_exact23_tw0p05_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json)
 - `teacher_weight=0.15`:
   - fp16 `0.5222`
   - `int6 0.5342`
   - `int4 0.6168`
   - artifact:
-    [conker7_bidirectional_exact23_tw0p15_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_bidirectional_exact23_tw0p15_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json)
+    [conker7_bidirectional_exact23_tw0p15_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json](../legacy_lab/out/conker7_bidirectional_exact23_tw0p15_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json)
 - `teacher_start=250`:
   - fp16 `0.5141`
   - `int6 0.5260`
   - `int4 0.6092`
   - artifact:
-    [conker7_bidirectional_exact23_tw01_start250_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_bidirectional_exact23_tw01_start250_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json)
+    [conker7_bidirectional_exact23_tw01_start250_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json](../legacy_lab/out/conker7_bidirectional_exact23_tw01_start250_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json)
 - `teacher_start=500`:
   - fp16 `0.5122`
   - `int6 0.5242`
   - `int4 0.6083`
   - artifact:
-    [conker7_bidirectional_exact23_tw01_start500_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_bidirectional_exact23_tw01_start500_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json)
+    [conker7_bidirectional_exact23_tw01_start500_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json](../legacy_lab/out/conker7_bidirectional_exact23_tw01_start500_warmstart_tandem1500_seq256_steps1000_seed42_2026-03-28.json)
 
 Warm-start “replication” rows:
 
-- [seed43](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps1000_seed43_2026-03-28.json)
-- [seed44](/Users/asuramaya/Code/carving_machine_v3/conker/out/conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps1000_seed44_2026-03-28.json)
+- [seed43](../legacy_lab/out/conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps1000_seed43_2026-03-28.json)
+- [seed44](../legacy_lab/out/conker7_bidirectional_exact23_tw01_warmstart_tandem1500_seq256_steps1000_seed44_2026-03-28.json)
 
 These are numerically identical to the seed-42 bridge row, so they are not true statistical replications. The current warm-start fine-tune path is effectively deterministic under the sequential training stream.
 
