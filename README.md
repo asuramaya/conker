@@ -1,24 +1,10 @@
 # Conker
 
-Standalone extraction of the `Conker` compression research line from `carving_machine_v3`.
+`Conker` is the causal compression and Parameter Golf line extracted from `carving_machine_v3`.
 
-This repo now reflects the March 28, 2026 reset:
+This repo reflects the March 28, 2026 reset. The old pre-fix `Conker-5/7` frontier is historical but invalidated; the clean surviving anchor is patched strict `Conker-4b`, and the active post-reset work is the `Conker-10` through `Conker-13` restart line.
 
-- the old pre-fix `Conker-5/7` frontier is invalidated
-- the strict clean anchor is patched `Conker-4b`, around `2.10 bpb`
-- `Conker-8` and `Conker-9` are honest rebuilds and both sit near the same strict floor
-- `Conker-10` is the first memory-first restart; it is real, but currently weak
-- `Conker-11` is the renamed recursive causal router
-- `Conker-12` is the higher-order four-axis program tensor
-- `Conker-13` is the direct five-axis controller over the `Conker-3` substrate
-
-This repo keeps:
-
-- training/runtime code
-- branch history and postmortems
-- packed-artifact and submission-facing utilities
-
-External tooling now lives in sibling repos:
+This repo keeps the causal runtime, training code, branch notes, and submission-facing utilities. Closely related tooling now lives in sibling repos:
 
 - [`blinx`](https://github.com/asuramaya/blinx): noncausal lossless-compression and oracle-discovery line
 - [`conker-detect`](https://github.com/asuramaya/conker-detect): structural, artifact-boundary, and legality auditing
@@ -27,26 +13,33 @@ External tooling now lives in sibling repos:
 
 ## Current State
 
-Current clean anchor:
+Clean anchor:
 
 - patched strict `Conker-4b`
 - full held-out fp16 `2.0971 bpb`
 - full held-out int6 `2.1055 bpb`
 - int6 artifact `3,730,410` bytes
 
-Current active restart:
+Best measured restart result:
 
 - `Conker-10` memory-first pilot
 - bridge fp16 `2.2397 bpb`
 - `int6 2.2608`
 - packed memory bytes `12,599,296`
 
+Active research line:
+
+- `Conker-10`: memory-first restart
+- `Conker-11`: recursive causal router
+- `Conker-12`: higher-order four-axis program tensor
+- `Conker-13`: direct five-axis controller over the `Conker-3` substrate
+
 Historical but invalidated:
 
 - old tandem / teacher rows in the `0.55 -> 0.53` range
 - invalidated by accidentally trainable structural buffers in `Conker-4b`
 
-Separate artifact-boundary lesson:
+Artifact-boundary lesson:
 
 - an old tandem packed artifact inflated to `11.87 MB` because it incorrectly serialized regenerated deterministic substrate
 - corrected packing brought the same invalid branch down to about `3.72 MB`
@@ -93,13 +86,13 @@ python3 conker/scripts/run_conker7_checkpoint_eval.py \
 
 ## Repo Layout
 
-- `carving_machine/`: vendored runtime core that `Conker` still depends on
 - `conker/src/`: branch models and quantization utilities
 - `conker/scripts/`: bridge runners, eval helpers, queue scripts, and packers
 - `conker/data/`: expected dataset and tokenizer layout
-- `conker/docs/`: archival branch notes copied from the lab tree
-- `docs/`: standalone navigation layer for current frontier, validity, and history
+- `conker/docs/`: detailed branch notes and copied lab-era records
+- `docs/`: public navigation layer for current frontier, validity, and history
 - `conker/submissions/`: packaged candidate artifacts and manifests
+- `carving_machine/`: vendored runtime core still used by this repo
 
 ## Branch Map
 
@@ -119,10 +112,10 @@ python3 conker/scripts/run_conker7_checkpoint_eval.py \
 
 - [Docs Index](./docs/README.md)
 - [Presentation](./docs/presentation.md)
-- [Rescue](./docs/rescue.md)
 - [Current Frontier](./docs/current_frontier.md)
 - [Validity](./docs/validity.md)
 - [Negative Results](./docs/negative_results.md)
+- [Rescue](./docs/rescue.md)
 - [History](./HISTORY.md)
 - [Roadmap](./ROADMAP.md)
 

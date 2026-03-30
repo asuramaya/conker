@@ -1,30 +1,30 @@
 # Docs
 
-This directory is the navigation layer for the public `conker` repo.
+This directory is the public documentation map for `conker`.
 
-Use this folder first. The inherited detailed note store still lives under [`../conker/docs`](../conker/docs/README.md), but that subtree is flatter and more archival.
+Start here if you want the current repo story. The deeper branch-note store still lives under [`../conker/docs`](../conker/docs/README.md), but that subtree is flatter, denser, and more archival.
 
 ## Start Here
 
 - [Presentation](./presentation.md)
-- [Rescue](./rescue.md)
 - [Current Frontier](./current_frontier.md)
 - [Validity](./validity.md)
 - [Negative Results](./negative_results.md)
+- [Rescue](./rescue.md)
 - [Compression Matrix](./matrices/COMPRESSION_MATRIX.md)
 
 ## Reading Order
 
-1. [Current Frontier](./current_frontier.md)
-2. [Presentation](./presentation.md)
+1. [Presentation](./presentation.md)
+2. [Current Frontier](./current_frontier.md)
 3. [Validity](./validity.md)
-4. [Rescue](./rescue.md)
-5. [Negative Results](./negative_results.md)
+4. [Negative Results](./negative_results.md)
+5. [Rescue](./rescue.md)
 6. [Detailed Branch Notes](../conker/docs/README.md)
 
 ## Branch Records
 
-- Active / post-reset notes live in [`../conker/docs`](../conker/docs/README.md)
+- Post-reset and active notes live in [`../conker/docs`](../conker/docs/README.md)
 - Early archived notes live in [`./archive/README.md`](./archive/README.md)
 - Invalidated historical branches live in [`./branches/README.md`](./branches/README.md)
 
